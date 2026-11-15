@@ -4,11 +4,16 @@ Every reference image is traced into vector shapes that are drawn with the HTML 
 This library is the source material for the character generator.
 
 ## Contents
-- `originals/` — the 48 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets that are traced; 17–48 are face close-ups and head sketches, not traced yet.
-- `traces/<id>.js` — one traced figure per file (46 figures). Each file adds one object to `window.TRACES`.
+- `originals/` — the 56 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53).
+- `traces/<id>.js` — one traced figure per file (107 figures: 46 bodies and poses, 61 faces and heads). Each file adds one object to `window.TRACES`.
 - `gallery.html` — opens in a browser; draws every traced figure with Canvas next to its original crop.
   Filter by character, sex, view or outfit piece. Click a figure to enlarge.
 - `tools/figures.json` — where each figure sits in its sheet (box), plus character, sex, view and outfit tags.
+- `masks/<id>.png` — for figures that are not on a plain page (screenshots with scenery, sheets of line
+  drawings): white marks the figure inside its box. Made by `tools/cutout.py`.
+- `tools/cutout.py` — makes those masks. Screenshots use a segmentation network (`pip install rembg
+  onnxruntime`, model downloaded on first run); line drawings use the connected lines with the
+  interior filled. `python3 tools/cutout.py [id ...]`. Run it before `trace.py` for a new figure.
 - `tools/trace.py` — the tracer. `python3 tools/trace.py` re-traces everything; `python3 tools/trace.py <id> ...` re-traces some.
 - `tools/compare.js` — renders each trace beside its original and reports a mean colour difference (`node tools/compare.js <out_dir> [id ...]`).
 - `tools/render_lib.js` — the Canvas renderer (`drawTrace(ctx, trace)`).
@@ -37,6 +42,18 @@ curves except where `sharp` is 1. Shapes are stacked: each colour layer is drawn
 | Kuvira (coat + metal armour) | 3/4 front, back |
 | Asami (jacket + skirt) | 3/4, front, side, back |
 | Asami (capelet outfit, gown) | capelet front, capelet 3/4, gown front, back, side |
+| Bolin (tunic sheet, image 53) | side, front, 3/4 |
+
+Faces and heads (ids contain `_face_`, `_profile_`, `_head_`, `_expr_` or `_sketch_`; views `head_front`,
+`head_three_quarter`, `head_side`):
+
+| Character | Colour close-ups | Line drawings |
+|---|---|---|
+| Korra | 6 front (2 with the bob), 4 side profiles, plus the 3 small head studies on the season 1 sheet | 3 front (ink bob, pencil, ink ponytail) |
+| Mako | 2 front (one show screenshot, one tutorial drawing), 4 three-quarter, 1 side (upper body) | 3 front (two stages of the tutorial drawing, one other) |
+| Asami | 2 front, 3 three-quarter, 2 side | — |
+| Bolin | 2 front, 1 three-quarter | 4 expression studies, 10 small heads, 7 from a sketch sheet (one is a side-view body) |
+| Kuvira | 1 front, 4 three-quarter | — |
 
 ## Known limits
 - Off-white details that touch the background (some fur trims, the lineart's white fill) are hard to
@@ -44,3 +61,12 @@ curves except where `sharp` is 1. Shapes are stacked: each colour layer is drawn
 - The Korra season 1 sheet and the Mako turnaround photos are photographed paper: small heads (~70 px)
   come out blotchy and a little paper shadow remains near Mako's feet on sheet B.
 - Watermarks/signatures are removed (inpainted or excluded); faint remnants can remain in the Mako close-up.
+- Face close-ups are show screenshots: colours carry the scene's lighting (several are tinted or
+  dark), and the picture frame crops the figure. Small irises can still lose their colour to a
+  neighbouring grey even with the extra detail colours.
+- `asami_profile_closeup`: her black hair is on a black background, so only the face, neck and collar
+  are cut out.
+- The Bolin sketch sheets (images 30–32) are small scans (heads 60–190 px): traces follow the lines but
+  are rough. Image 31 has overlapping drawings, so its figures include stray lines from neighbours.
+- Line drawings are traced as filled white shapes with their ink lines on top; open contours
+  (shoulders, collars that run off the drawing) are left unfilled.

@@ -1,7 +1,8 @@
 """Trace every figure listed in figures.json into Canvas-drawable vector data.
 
 Pipeline per figure:
-  1. cut the figure out of its sheet (background = median border colour)
+  1. cut the figure out of its sheet (background = median border colour; figures with a "cutout"
+     field use the mask made by cutout.py instead)
   2. flatten JPEG noise (mean-shift) and quantise to the figure's own palette
   3. upscale x4 with smooth edges, re-quantise  -> clean flat colour regions
   4. vectorise each colour region with vtracer (stacked splines)
@@ -101,6 +102,36 @@ def quantize(img, mask, k):
     _, lbl, C = cv2.kmeans(Z, k, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 40, 0.5), 4, cv2.KMEANS_PP_CENTERS)
     return C
 
+def add_detail(img, mask, C, n, tol=9.0):
+    """Extra palette entries for small flat areas the main palette misses (irises, lips, piping).
+    The figure is split finely into flat regions; the solid regions whose colour is furthest from
+    every palette entry are added one at a time (deterministic), until none is further than tol."""
+    lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB).astype(np.float32)
+    Z = lab[mask > 0]; k0 = min(48, max(2, len(Z) // 50))
+    cv2.setRNGSeed(7)
+    _, _, C0 = cv2.kmeans(Z, k0, None, (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.5), 2, cv2.KMEANS_PP_CENTERS)
+    lbl = remap(img, C0)
+    cols, areas = [], []
+    for i in range(k0):
+        solid = cv2.erode(((lbl == i) & (mask > 0)).astype(np.uint8), np.ones((3, 3), np.uint8))   # drops edge blends
+        ncc, cc = cv2.connectedComponents(solid, connectivity=8)
+        if ncc < 2: continue
+        cnt = np.bincount(cc.ravel(), minlength=ncc).astype(np.float32)
+        mean = np.stack([np.bincount(cc.ravel(), weights=lab[:, :, c].ravel(), minlength=ncc) for c in range(3)], 1) / cnt[:, None]
+        keep = np.arange(1, ncc)[cnt[1:] >= 2]
+        cols.append(mean[keep]); areas.append(cnt[keep])
+    if not cols: return C
+    cols = np.concatenate(cols).astype(np.float32)
+    w = np.array([0.6, 1, 1], np.float32)                     # hue/chroma differences matter more than lightness
+    P = C.astype(np.float32).copy()
+    for _ in range(n):
+        d = np.sqrt((((cols[:, None, :] - P[None]) * w) ** 2).sum(-1)).min(1)
+        j = int(d.argmax())
+        if d[j] < tol: break
+        near = np.sqrt((((cols - cols[j]) * w) ** 2).sum(-1)) < tol * 0.5
+        P = np.vstack([P, np.median(cols[near], 0)[None]])
+    return P
+
 def remap(img, C):
     lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB).astype(np.float32)
     d = ((lab[:, :, None, :] - C[None, None]) ** 2).sum(-1)
@@ -111,14 +142,14 @@ def lab2hex(c):
     return '#%02x%02x%02x' % (bgr[2], bgr[1], bgr[0])
 
 EPS = 0.45   # simplification tolerance in source pixels
-def ring_pts(c):
-    a = cv2.approxPolyDP(c, EPS * UP, True).reshape(-1, 2).astype(float)
+def ring_pts(c, div=UP):
+    a = cv2.approxPolyDP(c, EPS * div, True).reshape(-1, 2).astype(float)
     out, n = [], len(a)
     for k in range(n):
         p0, p1, p2 = a[k - 1], a[k], a[(k + 1) % n]
         v1, v2 = p0 - p1, p2 - p1
         cos = (v1 @ v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-9)
-        x, y = round(p1[0] / UP, 1), round(p1[1] / UP, 1)
+        x, y = round(p1[0] / div, 1), round(p1[1] / div, 1)
         out.extend([x, y, 1 if cos > -0.5 else 0])           # 1 = sharp corner (angle < 120 deg)
     return out
 
@@ -152,12 +183,23 @@ def trace_figure(fig, k=None):
         mk = np.full(g.shape, 255, np.uint8)               # inpaint the whole watermark rectangle
         full = np.zeros(src.shape[:2], np.uint8); full[ex[1]:ex[3], ex[0]:ex[2]] = mk
         src = cv2.inpaint(src, full, 4, cv2.INPAINT_TELEA)
-    bg_full = bg_color(src)
-    x0, y0, x1, y1 = fig['box']; crop = src[y0:y1, x0:x1].copy(); bg = bg_full[y0:y1, x0:x1]
-    mask = figure_mask(crop, bg, fig, fig['box'])
+    x0, y0, x1, y1 = fig['box']; crop = src[y0:y1, x0:x1].copy()
+    cut = fig.get('cutout')
+    if cut:   # not on a plain page: the figure was marked by tools/cutout.py (masks/<id>.png)
+        mask = (cv2.imread(os.path.join(ROOT, 'masks', fig['id'] + '.png'), 0) > 127).astype(np.uint8)
+        if cut['mode'] != 'model':   # line drawing: paper and faint watermarks become pure white
+            crop[cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY) >= 255 - cut.get('thr', 40)] = 255
+    else:
+        mask = figure_mask(crop, bg_color(src)[y0:y1, x0:x1], fig, fig['box'])
+    pre = fig.get('scale', 1)
+    if pre > 1:   # small source: enlarge it smoothly first, so thin lines and small features keep their shape
+        crop = cv2.resize(crop, None, fx=pre, fy=pre, interpolation=cv2.INTER_LANCZOS4)
+        mask = (cv2.resize(mask * 255, None, fx=pre, fy=pre, interpolation=cv2.INTER_LINEAR) > 127).astype(np.uint8)
+    lines = bool(cut) and cut['mode'] != 'model'
     flat = cv2.pyrMeanShiftFiltering(crop, 3, 14)
     k = k or fig.get('colors', 22)
     C = quantize(flat, mask, k)
+    if fig.get('detail'): C = add_detail(flat, mask, C, fig['detail'])
     lbl = remap(flat, C)
     # palette image -> upscale smoothly -> re-quantise (sub-pixel smooth boundaries)
     pal_bgr = cv2.cvtColor(C.astype(np.uint8)[None], cv2.COLOR_LAB2BGR)[0]
@@ -169,9 +211,9 @@ def trace_figure(fig, k=None):
     mbig = cv2.GaussianBlur(mbig, (5, 5), 0) > 127
     # silhouette rim -> ink colour (removes the light anti-alias halo, matches the outlined style)
     dark_i = int(np.argmin(C[:, 0] + 0.6 * np.hypot(C[:, 1] - 128, C[:, 2] - 128)))   # darkest neutral = ink
-    if C[dark_i][0] < 90:
+    if C[dark_i][0] < 90 and not lines:    # (a line drawing already is its own outline)
         dist = cv2.distanceTransform(mbig.astype(np.uint8), cv2.DIST_L2, 3)
-        rim = mbig & (dist < UP * 0.85)
+        rim = mbig & (dist < UP * pre * 0.85)
         lbl_big[rim] = dark_i
     # one layer per palette entry, drawn largest-area first (stacked, no seams)
     areas = [(lbl_big[mbig] == i).sum() for i in range(len(C))]
@@ -188,9 +230,9 @@ def trace_figure(fig, k=None):
         hier = hier[0]
         for j, c in enumerate(cs):
             if hier[j][3] != -1: continue                       # outer contours; holes appended below
-            if cv2.contourArea(c) < (UP * 1.2) ** 2: continue
-            rings = [c] + [cs[h] for h in range(len(cs)) if hier[h][3] == j and cv2.contourArea(cs[h]) >= (UP * 1.2) ** 2]
-            shape = [ring_pts(r) for r in rings]
+            if cv2.contourArea(c) < (UP * pre * 1.2) ** 2: continue
+            rings = [c] + [cs[h] for h in range(len(cs)) if hier[h][3] == j and cv2.contourArea(cs[h]) >= (UP * pre * 1.2) ** 2]
+            shape = [ring_pts(r, UP * pre) for r in rings]
             shape = [r for r in shape if len(r) >= 3]
             if shape: paths.append([int(ci), shape])
     # true colours: median of the ORIGINAL (unsmoothed) pixels that fell in each cluster, away from edges

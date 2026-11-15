@@ -1,5 +1,5 @@
 {
- "_doc": "Every figure in every reference image. box = [x0,y0,x1,y1] in source pixels. exclude = rects removed (signatures/watermarks). view: front | three_quarter | side | back | head_* | pose. thr = mask threshold (Lab distance from background model); inpaint = rects whose dark strokes are inpainted (watermarks over the figure).. paper = photographed sheet, use local paper-brightness background model.",
+ "_doc": "Every figure in every reference image. box = [x0,y0,x1,y1] in source pixels. exclude = rects removed (signatures/watermarks). view: front | three_quarter | side | back | head_* | pose. thr = mask threshold (Lab distance from background model); inpaint = rects whose dark strokes are inpainted (watermarks over the figure).. paper = photographed sheet, use local paper-brightness background model. cutout = the figure is not on a plain page: tools/cutout.py writes masks/<id>.png for it (see that file; exclude may then also hold polygons). colors = palette size (default 22). detail = up to this many extra palette colours for small flat areas the main palette misses (irises, lips). scale = enlarge a small source this many times before tracing.",
  "figures": [
   {
    "id": "mako_lineart_front",
@@ -1063,6 +1063,1507 @@
     "long_wavy_hair"
    ],
    "view": "side"
+  },
+  {
+   "id": "korra_face_s4_front_dark",
+   "src": "17_korra_s4_face_closeup_dark.jpg",
+   "box": [
+    2,
+    12,
+    250,
+    250
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "bob_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8,
+   "scale": 2
+  },
+  {
+   "id": "korra_face_front_smile",
+   "src": "18_korra_face_closeup_smile.jpg",
+   "box": [
+    69,
+    0,
+    398,
+    388
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_face_front_arms_up",
+   "src": "19_korra_face_closeups_pair.jpg",
+   "box": [
+    2,
+    0,
+    516,
+    300
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "sleeveless_top",
+    "armbands"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_face_front_chin_on_hand",
+   "src": "19_korra_face_closeups_pair.jpg",
+   "box": [
+    170,
+    308,
+    454,
+    594
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "sleeveless_top",
+    "gauntlets"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_face_s4_front",
+   "src": "20_korra_s4_face_closeup.jpg",
+   "box": [
+    34,
+    0,
+    359,
+    300
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "bob_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_face_comic_front",
+   "src": "21_korra_face_comic_ponytail.jpg",
+   "box": [
+    0,
+    0,
+    270,
+    360
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "isnet-anime"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_lineart",
+   "src": "22_mako_face_lineart.png",
+   "box": [
+    21,
+    45,
+    521,
+    554
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "scarf",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5,
+    "cut": [
+     "bottom"
+    ]
+   },
+   "exclude": [
+    [
+     420,
+     520,
+     554,
+     554
+    ]
+   ],
+   "colors": 4
+  },
+  {
+   "id": "mako_face_construction",
+   "src": "23_mako_face_construction.png",
+   "box": [
+    21,
+    45,
+    464,
+    540
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "scarf",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5
+   },
+   "exclude": [
+    [
+     420,
+     520,
+     554,
+     554
+    ]
+   ],
+   "colors": 6
+  },
+  {
+   "id": "asami_face_front_city",
+   "src": "24_asami_face_closeup_city.jpg",
+   "box": [
+    0,
+    0,
+    324,
+    308
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "long_wavy_hair",
+    "lapels"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "asami_face_3q_tutorial",
+   "src": "25_asami_face_closeup_tutorial.jpg",
+   "box": [
+    0,
+    36,
+    554,
+    554
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "long_wavy_hair",
+    "jacket"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "inpaint": [
+    [
+     418,
+     520,
+     552,
+     552
+    ]
+   ],
+   "detail": 8
+  },
+  {
+   "id": "asami_face_3q_small",
+   "src": "26_asami_face_3q_small.jpg",
+   "box": [
+    30,
+    10,
+    237,
+    194
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "long_wavy_hair",
+    "jacket",
+    "lapels"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8,
+   "scale": 2
+  },
+  {
+   "id": "asami_face_front_lanterns",
+   "src": "27_asami_face_closeup_lanterns.jpg",
+   "box": [
+    14,
+    0,
+    599,
+    469
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "long_wavy_hair",
+    "gown",
+    "necklace"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "asami_face_3q_side_glance",
+   "src": "28_asami_face_closeup_side_glance.jpg",
+   "box": [
+    0,
+    3,
+    513,
+    554
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "long_wavy_hair",
+    "jacket"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "exclude": [
+    [
+     470,
+     290,
+     554,
+     478
+    ]
+   ],
+   "detail": 8
+  },
+  {
+   "id": "bolin_face_front_uniform",
+   "src": "29_bolin_face_closeup_uniform.jpg",
+   "box": [
+    0,
+    14,
+    505,
+    606
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "high_collar",
+    "uniform"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "bolin_expr_1",
+   "src": "30_bolin_expression_sheet_crying.jpg",
+   "box": [
+    58,
+    19,
+    184,
+    185
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_expr_2",
+   "src": "30_bolin_expression_sheet_crying.jpg",
+   "box": [
+    253,
+    8,
+    400,
+    157
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_expr_3",
+   "src": "30_bolin_expression_sheet_crying.jpg",
+   "box": [
+    334,
+    104,
+    526,
+    291
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_expr_4",
+   "src": "30_bolin_expression_sheet_crying.jpg",
+   "box": [
+    57,
+    136,
+    314,
+    349
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_3q",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    12,
+    8,
+    142,
+    162
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "lapels"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_angry",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    140,
+    3,
+    202,
+    112
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_shout",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    200,
+    4,
+    396,
+    166
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "lapels"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_worried",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    12,
+    168,
+    112,
+    300
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "lapels"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_smile",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    90,
+    278,
+    147,
+    373
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_surprised",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    3,
+    308,
+    152,
+    500
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "suit_jacket"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "exclude": [
+    [
+     92,
+     300,
+     152,
+     376
+    ]
+   ],
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_sketch_side_body",
+   "src": "31_bolin_sketch_sheet_poses.jpg",
+   "box": [
+    318,
+    178,
+    397,
+    486
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "knickers",
+    "shoes"
+   ],
+   "view": "side",
+   "cutout": {
+    "mode": "lines_rect",
+    "thr": 25,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_01",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    16,
+    18,
+    80,
+    108
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_02",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    95,
+    17,
+    174,
+    110
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_03",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    178,
+    24,
+    287,
+    104
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_04",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    291,
+    13,
+    374,
+    116
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_side",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_05",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    379,
+    11,
+    484,
+    115
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_06",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    19,
+    124,
+    108,
+    212
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_07",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    124,
+    118,
+    189,
+    217
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 9
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_08",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    206,
+    124,
+    294,
+    216
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_09",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    316,
+    124,
+    386,
+    220
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "bolin_head_10",
+   "src": "32_bolin_head_sketches.jpg",
+   "box": [
+    411,
+    126,
+    480,
+    215
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 7,
+    "seal": 5
+   },
+   "colors": 5,
+   "scale": 2
+  },
+  {
+   "id": "kuvira_face_3q_fanart",
+   "src": "33_kuvira_face_3q_fanart.jpg",
+   "box": [
+    0,
+    32,
+    447,
+    447
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "high_collar",
+    "metal_armor",
+    "pauldrons"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "kuvira_face_3q_smile",
+   "src": "34_kuvira_face_3q_smile.jpg",
+   "box": [
+    0,
+    29,
+    359,
+    450
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "high_collar",
+    "metal_armor",
+    "pauldrons",
+    "gloves"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "kuvira_face_3q_grey_room",
+   "src": "35_kuvira_face_3q_grey_room.jpg",
+   "box": [
+    0,
+    9,
+    447,
+    447
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "high_collar",
+    "metal_armor",
+    "pauldrons"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "kuvira_face_3q_fist",
+   "src": "36_kuvira_face_3q_fist.jpg",
+   "box": [
+    87,
+    16,
+    624,
+    457
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "high_collar",
+    "metal_armor",
+    "pauldrons",
+    "gloves"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "kuvira_face_front_smirk",
+   "src": "37_kuvira_face_front_smirk.jpg",
+   "box": [
+    109,
+    2,
+    451,
+    409
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "high_collar",
+    "pauldrons"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_3q_scarf",
+   "src": "38_mako_face_3q_scarf.jpg",
+   "box": [
+    41,
+    24,
+    509,
+    534
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "scarf",
+    "high_collar",
+    "gloves"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_3q_uniform",
+   "src": "39_mako_face_3q_uniform.png",
+   "box": [
+    34,
+    7,
+    300,
+    300
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "high_collar",
+    "uniform"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "exclude": [
+    [
+     258,
+     50,
+     300,
+     195
+    ]
+   ],
+   "detail": 8
+  },
+  {
+   "id": "mako_profile_uniform",
+   "src": "40_mako_side_profile_uniform.jpg",
+   "box": [
+    51,
+    77,
+    311,
+    618
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "uniform",
+    "belt",
+    "gloves"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_3q_over_shoulder",
+   "src": "41_mako_face_3q_over_shoulder.jpg",
+   "box": [
+    29,
+    0,
+    238,
+    327
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "high_collar"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_3q_tank_top",
+   "src": "42_mako_face_3q_tank_top_render.jpg",
+   "box": [
+    115,
+    0,
+    515,
+    387
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tank_top"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "mako_face_front_uniform",
+   "src": "43_mako_face_front_uniform.jpg",
+   "box": [
+    0,
+    6,
+    310,
+    250
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "high_collar",
+    "uniform"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8,
+   "scale": 2
+  },
+  {
+   "id": "mako_face_front_lineart2",
+   "src": "44_mako_face_front_lineart.png",
+   "box": [
+    0,
+    0,
+    379,
+    519
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5,
+    "cut": [
+     "bottom"
+    ]
+   },
+   "colors": 4
+  },
+  {
+   "id": "korra_profile_left_seated",
+   "src": "45_korra_side_profile_left_seated.jpg",
+   "box": [
+    157,
+    0,
+    475,
+    554
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "sleeveless_top",
+    "gauntlets"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_profile_s4_right",
+   "src": "46_korra_s4_side_profile_right.jpg",
+   "box": [
+    49,
+    14,
+    459,
+    557
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "bob_hair",
+    "high_collar",
+    "sleeveless_top"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_profile_right_ponytail",
+   "src": "47_korra_side_profile_right_ponytail.jpg",
+   "box": [
+    41,
+    13,
+    278,
+    334
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "high_collar"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "isnet-anime"
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_profile_s4_looking_down",
+   "src": "48_korra_s4_side_profile_right_looking_down.jpg",
+   "box": [
+    74,
+    17,
+    451,
+    561
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "bob_hair",
+    "high_collar",
+    "sleeveless_top"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "asami_profile_upper_body",
+   "src": "49_asami_side_upper_body_ponytail.jpg",
+   "box": [
+    29,
+    12,
+    226,
+    412
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "ponytail_hair",
+    "jacket"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "asami_profile_closeup",
+   "src": "50_asami_side_profile_closeup.jpg",
+   "box": [
+    23,
+    3,
+    261,
+    360
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "ponytail_hair",
+    "lapels"
+   ],
+   "view": "head_side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "bolin_face_3q_brown_uniform",
+   "src": "51_bolin_face_3q_brown_uniform.jpg",
+   "box": [
+    0,
+    3,
+    384,
+    520
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "high_collar",
+    "uniform"
+   ],
+   "view": "head_three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite"
+   },
+   "detail": 8
+  },
+  {
+   "id": "bolin_face_front_green_coat",
+   "src": "52_bolin_face_front_green_coat.jpg",
+   "box": [
+    0,
+    12,
+    447,
+    447
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "high_collar",
+    "long_coat"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "model",
+    "model": "isnet-anime"
+   },
+   "exclude": [
+    [
+     [
+      0,
+      140
+     ],
+     [
+      112,
+      140
+     ],
+     [
+      114,
+      200
+     ],
+     [
+      118,
+      268
+     ],
+     [
+      136,
+      284
+     ],
+     [
+      100,
+      291
+     ],
+     [
+      52,
+      303
+     ],
+     [
+      90,
+      316
+     ],
+     [
+      126,
+      331
+     ],
+     [
+      60,
+      346
+     ],
+     [
+      20,
+      363
+     ],
+     [
+      0,
+      396
+     ]
+    ]
+   ],
+   "detail": 8
+  },
+  {
+   "id": "bolin_tunic_side",
+   "src": "53_bolin_tunic_turnaround.jpg",
+   "box": [
+    5,
+    7,
+    125,
+    450
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "belt",
+    "knickers",
+    "leg_wraps",
+    "shoes"
+   ],
+   "view": "side",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite",
+    "holes": true
+   },
+   "detail": 8
+  },
+  {
+   "id": "bolin_tunic_front",
+   "src": "53_bolin_tunic_turnaround.jpg",
+   "box": [
+    136,
+    5,
+    321,
+    450
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "belt",
+    "knickers",
+    "leg_wraps",
+    "shoes"
+   ],
+   "view": "front",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite",
+    "holes": true
+   },
+   "detail": 8
+  },
+  {
+   "id": "bolin_tunic_3q",
+   "src": "53_bolin_tunic_turnaround.jpg",
+   "box": [
+    321,
+    5,
+    465,
+    450
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "belt",
+    "knickers",
+    "leg_wraps",
+    "shoes"
+   ],
+   "view": "three_quarter",
+   "cutout": {
+    "mode": "model",
+    "model": "birefnet-general-lite",
+    "holes": true
+   },
+   "detail": 8
+  },
+  {
+   "id": "korra_face_s4_lineart",
+   "src": "54_korra_s4_face_lineart.png",
+   "box": [
+    5,
+    33,
+    445,
+    447
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "bob_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5,
+    "cut": [
+     "bottom"
+    ]
+   },
+   "colors": 4
+  },
+  {
+   "id": "korra_face_pencil_sketch",
+   "src": "55_korra_face_pencil_sketch.jpg",
+   "box": [
+    43,
+    16,
+    320,
+    480
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 30,
+    "grow": 9,
+    "seal": 5
+   },
+   "colors": 6
+  },
+  {
+   "id": "korra_face_front_lineart",
+   "src": "56_korra_face_front_lineart.png",
+   "box": [
+    0,
+    0,
+    319,
+    626
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair"
+   ],
+   "view": "head_front",
+   "cutout": {
+    "mode": "lines",
+    "thr": 40,
+    "grow": 9,
+    "seal": 5,
+    "cut": [
+     "bottom"
+    ]
+   },
+   "colors": 4
   }
  ]
 }
