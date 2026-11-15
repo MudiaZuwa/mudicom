@@ -49,8 +49,10 @@ def figure_mask(crop, bg, fig, box, thr=26):
     d = np.sqrt(((lab - bg) ** 2).sum(-1))
     m = (d > thr).astype(np.uint8)
     x0, y0 = box[0], box[1]
+    excl = np.zeros(m.shape, bool)
     for ex in fig.get('exclude', []):
-        m[max(0, ex[1] - y0):max(0, ex[3] - y0), max(0, ex[0] - x0):max(0, ex[2] - x0)] = 0
+        excl[max(0, ex[1] - y0):max(0, ex[3] - y0), max(0, ex[0] - x0):max(0, ex[2] - x0)] = True
+    m[excl] = 0
     m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((2, 2), np.uint8))
     # keep the main figure: largest component + sizeable pieces in the central band
     n, cc, st, cen = cv2.connectedComponentsWithStats(m, connectivity=8)
@@ -74,11 +76,13 @@ def figure_mask(crop, bg, fig, box, thr=26):
         gc[m > 0] = cv2.GC_PR_FGD
         gc[cv2.erode(m, np.ones((5, 5), np.uint8)) > 0] = cv2.GC_FGD
         gc[(d < thr * 0.45) & (cv2.dilate(m, np.ones((3, 3), np.uint8)) == 0)] = cv2.GC_BGD
+        gc[excl] = cv2.GC_BGD
         bgdm, fgdm = np.zeros((1, 65), np.float64), np.zeros((1, 65), np.float64)
         cv2.grabCut(crop, gc, None, bgdm, fgdm, 4, cv2.GC_INIT_WITH_MASK)
         m = np.isin(gc, [cv2.GC_FGD, cv2.GC_PR_FGD]).astype(np.uint8)
         n, cc, st, _ = cv2.connectedComponentsWithStats(m)
         if n > 1: m = (cc == 1 + np.argmax(st[1:, 4])).astype(np.uint8) | (m & (st[cc, 4] > 60).astype(np.uint8))
+    m[excl] = 0
     # fill enclosed holes that are NOT background-coloured (white fur, collars, eye whites)
     inv = (1 - m).astype(np.uint8)
     n, cc, st, _ = cv2.connectedComponentsWithStats(inv, connectivity=4)

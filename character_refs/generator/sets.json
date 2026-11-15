@@ -1,0 +1,80 @@
+{
+ "_doc": "Outfit sets the generator can mix. Each set names the traced figure for each view. A null view falls back to 'fallback'. facing: which way the side view faces in the source (the generator mirrors to face left).",
+ "sets": {
+  "mako": {
+   "label": "Mako (tunic, scarf, wraps)",
+   "sex": "male",
+   "views": {
+    "front": "mako_sheetA_front",
+    "side": "mako_sheetA_side",
+    "back": "mako_sheetA_back"
+   }
+  },
+  "korra": {
+   "label": "Korra S1 (water tribe)",
+   "sex": "female",
+   "views": {
+    "front": "korra_s1_front",
+    "side": "korra_s1_side",
+    "back": "korra_s1_back"
+   }
+  },
+  "korra_s4": {
+   "label": "Korra S4 (bob, long gauntlets)",
+   "sex": "female",
+   "views": {
+    "front": "korra_s4_front",
+    "side": null,
+    "back": "korra_s4_back"
+   },
+   "fallback": "korra"
+  },
+  "metal_officer": {
+   "label": "Metalbender officer (armour)",
+   "sex": "female",
+   "views": {
+    "front": "metal_officer_front",
+    "side": "metal_officer_side",
+    "back": "metal_officer_back"
+   }
+  },
+  "bolin": {
+   "label": "Bolin (suit)",
+   "sex": "male",
+   "views": {
+    "front": "bolin_suit_front",
+    "side": "bolin_suit_side",
+    "back": "bolin_suit_back"
+   }
+  },
+  "asami_suit": {
+   "label": "Asami (jacket, skirt, boots)",
+   "sex": "female",
+   "views": {
+    "front": "asami_suit_front",
+    "side": "asami_suit_side",
+    "back": "asami_suit_back"
+   }
+  },
+  "asami_gown": {
+   "label": "Asami (gown)",
+   "sex": "female",
+   "views": {
+    "front": "asami_gown_front",
+    "side": "asami_gown_side",
+    "back": "asami_gown_back"
+   },
+   "lockFeet": true
+  },
+  "kuvira": {
+   "label": "Kuvira (coat, metal armour)",
+   "sex": "female",
+   "views": {
+    "front": "kuvira_front",
+    "side": null,
+    "back": "kuvira_back"
+   },
+   "fallback": "metal_officer"
+  }
+ }
+}

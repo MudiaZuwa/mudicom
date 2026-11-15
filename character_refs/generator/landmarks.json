@@ -1,0 +1,743 @@
+{
+ "asami_gown_back": {
+  "top": 5,
+  "ground": 357,
+  "chin": 56.0,
+  "waist": 143,
+  "shin": 283.1,
+  "cx": 66.5,
+  "waistW": 65,
+  "neckW": 64,
+  "shinW": 66,
+  "flip": false,
+  "skull": 5,
+  "hair": [
+   [
+    [
+     26,
+     55
+    ],
+    [
+     90,
+     55
+    ],
+    [
+     88,
+     75
+    ],
+    [
+     84,
+     95
+    ],
+    [
+     78,
+     110
+    ],
+    [
+     66,
+     116
+    ],
+    [
+     54,
+     112
+    ],
+    [
+     42,
+     104
+    ],
+    [
+     32,
+     90
+    ],
+    [
+     27,
+     72
+    ]
+   ]
+  ],
+  "cxNeck": 57.0,
+  "cxWaist": 66.5,
+  "cxShin": 56.0
+ },
+ "asami_gown_front": {
+  "top": 5,
+  "ground": 356,
+  "chin": 55.9,
+  "waist": 143,
+  "shin": 282.3,
+  "cx": 49.0,
+  "waistW": 80,
+  "neckW": 65,
+  "shinW": 55,
+  "flip": false,
+  "skull": 5,
+  "hair": [
+   [
+    [
+     8,
+     55
+    ],
+    [
+     36,
+     55
+    ],
+    [
+     34,
+     64
+    ],
+    [
+     30,
+     75
+    ],
+    [
+     22,
+     82
+    ],
+    [
+     12,
+     78
+    ],
+    [
+     8,
+     66
+    ]
+   ],
+   [
+    [
+     64,
+     55
+    ],
+    [
+     88,
+     55
+    ],
+    [
+     88,
+     66
+    ],
+    [
+     82,
+     74
+    ],
+    [
+     72,
+     74
+    ],
+    [
+     66,
+     64
+    ]
+   ]
+  ],
+  "cxNeck": 47.0,
+  "cxWaist": 49.0,
+  "cxShin": 51.5
+ },
+ "asami_gown_side": {
+  "top": 5,
+  "ground": 357,
+  "chin": 56.0,
+  "waist": 145,
+  "shin": 283.1,
+  "cx": 44.0,
+  "waistW": 40,
+  "neckW": 60,
+  "shinW": 70,
+  "flip": false,
+  "skull": 5,
+  "hair": [
+   [
+    [
+     50,
+     55
+    ],
+    [
+     88,
+     55
+    ],
+    [
+     90,
+     70
+    ],
+    [
+     84,
+     90
+    ],
+    [
+     86,
+     105
+    ],
+    [
+     76,
+     115
+    ],
+    [
+     66,
+     105
+    ],
+    [
+     60,
+     85
+    ],
+    [
+     54,
+     70
+    ]
+   ],
+   [
+    [
+     24,
+     55
+    ],
+    [
+     36,
+     55
+    ],
+    [
+     36,
+     66
+    ],
+    [
+     28,
+     66
+    ]
+   ]
+  ],
+  "cxNeck": 52.0,
+  "cxWaist": 44.0,
+  "cxShin": 54.0
+ },
+ "asami_suit_back": {
+  "top": 6,
+  "ground": 361,
+  "chin": 57.5,
+  "waist": 151.5,
+  "shin": 286.4,
+  "cx": 102.0,
+  "waistW": 82,
+  "neckW": 70,
+  "shinW": 96,
+  "flip": false,
+  "skull": 6,
+  "hair": [
+   [
+    [
+     66,
+     57
+    ],
+    [
+     150,
+     57
+    ],
+    [
+     148,
+     80
+    ],
+    [
+     140,
+     100
+    ],
+    [
+     125,
+     107
+    ],
+    [
+     110,
+     104
+    ],
+    [
+     95,
+     107
+    ],
+    [
+     78,
+     101
+    ],
+    [
+     70,
+     85
+    ]
+   ]
+  ],
+  "cxNeck": 112.5,
+  "cxWaist": 102.0,
+  "cxShin": 87.0
+ },
+ "asami_suit_front": {
+  "top": 6,
+  "ground": 372,
+  "chin": 59.1,
+  "waist": 156.1,
+  "shin": 295.1,
+  "cx": 54.0,
+  "waistW": 76,
+  "neckW": 62,
+  "shinW": 52,
+  "flip": false,
+  "skull": 6,
+  "face": [
+   58,
+   40
+  ],
+  "hair": [
+   [
+    [
+     6,
+     58
+    ],
+    [
+     42,
+     58
+    ],
+    [
+     44,
+     64
+    ],
+    [
+     34,
+     70
+    ],
+    [
+     26,
+     80
+    ],
+    [
+     24,
+     95
+    ],
+    [
+     14,
+     95
+    ],
+    [
+     6,
+     80
+    ]
+   ],
+   [
+    [
+     66,
+     58
+    ],
+    [
+     86,
+     58
+    ],
+    [
+     88,
+     70
+    ],
+    [
+     80,
+     78
+    ],
+    [
+     70,
+     74
+    ]
+   ]
+  ],
+  "cxNeck": 47.0,
+  "cxWaist": 54.0,
+  "cxShin": 46.0
+ },
+ "asami_suit_side": {
+  "top": 6,
+  "ground": 369,
+  "chin": 58.6,
+  "waist": 154.8,
+  "shin": 292.8,
+  "cx": 54.0,
+  "waistW": 40,
+  "neckW": 64,
+  "shinW": 53,
+  "flip": false,
+  "skull": 6,
+  "hair": [
+   [
+    [
+     52,
+     58
+    ],
+    [
+     95,
+     58
+    ],
+    [
+     98,
+     80
+    ],
+    [
+     92,
+     105
+    ],
+    [
+     96,
+     122
+    ],
+    [
+     85,
+     128
+    ],
+    [
+     72,
+     118
+    ],
+    [
+     62,
+     100
+    ],
+    [
+     58,
+     80
+    ]
+   ],
+   [
+    [
+     30,
+     58
+    ],
+    [
+     44,
+     58
+    ],
+    [
+     44,
+     72
+    ],
+    [
+     34,
+     74
+    ]
+   ]
+  ],
+  "cxNeck": 63.5,
+  "cxWaist": 54.0,
+  "cxShin": 59.5
+ },
+ "bolin_suit_back": {
+  "top": 3,
+  "ground": 257,
+  "chin": 39.8,
+  "waist": 107.1,
+  "shin": 203.7,
+  "cx": 49.5,
+  "waistW": 81,
+  "neckW": 24,
+  "shinW": 61,
+  "flip": false,
+  "skull": 3,
+  "hair": [],
+  "cxNeck": 51.5,
+  "cxWaist": 49.5,
+  "cxShin": 46.5
+ },
+ "bolin_suit_front": {
+  "top": 3,
+  "ground": 259,
+  "chin": 40.1,
+  "waist": 108.0,
+  "shin": 205.2,
+  "cx": 50.5,
+  "waistW": 47,
+  "neckW": 40,
+  "shinW": 71,
+  "flip": false,
+  "skull": 3,
+  "hair": [],
+  "cxNeck": 51.5,
+  "cxWaist": 50.5,
+  "cxShin": 52.5
+ },
+ "bolin_suit_side": {
+  "top": 6,
+  "ground": 256,
+  "chin": 42.2,
+  "waist": 108.5,
+  "shin": 203.5,
+  "cx": 38.5,
+  "waistW": 63,
+  "neckW": 23,
+  "shinW": 47,
+  "flip": false,
+  "skull": 6,
+  "hair": [],
+  "cxNeck": 50.5,
+  "cxWaist": 38.5,
+  "cxShin": 44.5
+ },
+ "korra_s1_back": {
+  "top": 1,
+  "ground": 454,
+  "chin": 66.7,
+  "waist": 186.7,
+  "shin": 384,
+  "cx": 69.0,
+  "waistW": 96,
+  "neckW": 39,
+  "shinW": 108,
+  "flip": false,
+  "skull": 22,
+  "hair": [],
+  "cxNeck": 71.0,
+  "cxWaist": 69.0,
+  "cxShin": 73.0
+ },
+ "korra_s1_front": {
+  "top": 5,
+  "ground": 458,
+  "chin": 70.7,
+  "waist": 190.7,
+  "shin": 388,
+  "cx": 66.0,
+  "waistW": 118,
+  "neckW": 42,
+  "shinW": 130,
+  "flip": false,
+  "skull": 22,
+  "hair": [
+   [
+    [
+     44,
+     66
+    ],
+    [
+     57,
+     66
+    ],
+    [
+     58,
+     80
+    ],
+    [
+     56,
+     96
+    ],
+    [
+     48,
+     98
+    ],
+    [
+     44,
+     86
+    ]
+   ],
+   [
+    [
+     77,
+     66
+    ],
+    [
+     89,
+     66
+    ],
+    [
+     91,
+     82
+    ],
+    [
+     88,
+     96
+    ],
+    [
+     80,
+     97
+    ],
+    [
+     77,
+     84
+    ]
+   ]
+  ],
+  "cxNeck": 67.0,
+  "cxWaist": 66.0,
+  "cxShin": 79.0
+ },
+ "korra_s1_side": {
+  "top": 0,
+  "ground": 453,
+  "chin": 65.7,
+  "waist": 185.7,
+  "shin": 392,
+  "cx": 59.0,
+  "waistW": 48,
+  "neckW": 28,
+  "shinW": 52,
+  "flip": true,
+  "skull": 22,
+  "hair": [],
+  "cxNeck": 59.0,
+  "cxWaist": 59.0,
+  "cxShin": 46.0
+ },
+ "korra_s4_back": {
+  "top": 3,
+  "ground": 467,
+  "chin": 70.3,
+  "waist": 193.2,
+  "shin": 369.6,
+  "cx": 49.5,
+  "waistW": 93,
+  "neckW": 29,
+  "shinW": 119,
+  "flip": false,
+  "skull": 3,
+  "hair": [],
+  "cxNeck": 53.0,
+  "cxWaist": 49.5,
+  "cxShin": 69.5
+ },
+ "korra_s4_front": {
+  "top": 5,
+  "ground": 473,
+  "chin": 72.9,
+  "waist": 196.9,
+  "shin": 374.7,
+  "cx": 63.5,
+  "waistW": 105,
+  "neckW": 38,
+  "shinW": 129,
+  "flip": false,
+  "skull": 5,
+  "hair": [],
+  "cxNeck": 78.5,
+  "cxWaist": 63.5,
+  "cxShin": 90.5
+ },
+ "kuvira_back": {
+  "top": 7,
+  "ground": 528,
+  "chin": 82.5,
+  "waist": 212,
+  "shin": 405,
+  "cx": 83.0,
+  "waistW": 80,
+  "neckW": 99,
+  "shinW": 124,
+  "flip": false,
+  "skull": 7,
+  "hair": [],
+  "cxNeck": 82.0,
+  "cxWaist": 83.0,
+  "cxShin": 99.0
+ },
+ "kuvira_front": {
+  "top": 5,
+  "ground": 536,
+  "chin": 82.0,
+  "waist": 213,
+  "shin": 405,
+  "cx": 94.0,
+  "waistW": 94,
+  "neckW": 71,
+  "shinW": 108,
+  "flip": false,
+  "skull": 5,
+  "hair": [],
+  "cxNeck": 80.5,
+  "cxWaist": 94.0,
+  "cxShin": 71.0
+ },
+ "mako_sheetA_back": {
+  "top": 8,
+  "ground": 461,
+  "chin": 73.7,
+  "waist": 193.7,
+  "shin": 365.9,
+  "cx": 107.0,
+  "waistW": 96,
+  "neckW": 79,
+  "shinW": 132,
+  "flip": false,
+  "skull": 16,
+  "hair": [],
+  "cxNeck": 92.5,
+  "cxWaist": 107.0,
+  "cxShin": 98.0
+ },
+ "mako_sheetA_front": {
+  "top": 6,
+  "ground": 461,
+  "chin": 72.0,
+  "waist": 192.5,
+  "shin": 365.4,
+  "cx": 73.5,
+  "waistW": 123,
+  "neckW": 67,
+  "shinW": 105,
+  "flip": false,
+  "skull": 14,
+  "hair": [],
+  "cxNeck": 73.5,
+  "cxWaist": 73.5,
+  "cxShin": 69.5
+ },
+ "mako_sheetA_side": {
+  "top": 10,
+  "ground": 461,
+  "chin": 75.4,
+  "waist": 194.9,
+  "shin": 366.3,
+  "cx": 52.0,
+  "waistW": 58,
+  "neckW": 47,
+  "shinW": 78,
+  "flip": false,
+  "skull": 16,
+  "hair": [],
+  "cxNeck": 56.5,
+  "cxWaist": 52.0,
+  "cxShin": 50.0
+ },
+ "metal_officer_back": {
+  "top": 7,
+  "ground": 496,
+  "chin": 77.9,
+  "waist": 204,
+  "shin": 393.3,
+  "cx": 55.0,
+  "waistW": 102,
+  "neckW": 64,
+  "shinW": 99,
+  "flip": false,
+  "skull": 7,
+  "hair": [],
+  "cxNeck": 62.5,
+  "cxWaist": 55.0,
+  "cxShin": 75.5
+ },
+ "metal_officer_front": {
+  "top": 4,
+  "ground": 508,
+  "chin": 77.1,
+  "waist": 200,
+  "shin": 402.2,
+  "cx": 88.0,
+  "waistW": 112,
+  "neckW": 62,
+  "shinW": 124,
+  "flip": false,
+  "skull": 4,
+  "hair": [],
+  "cxNeck": 77.5,
+  "cxWaist": 88.0,
+  "cxShin": 95.0
+ },
+ "metal_officer_side": {
+  "top": 1,
+  "ground": 496,
+  "chin": 72.8,
+  "waist": 199,
+  "shin": 392.1,
+  "cx": 65.5,
+  "waistW": 57,
+  "neckW": 32,
+  "shinW": 40,
+  "flip": true,
+  "skull": 1,
+  "hair": [],
+  "cxNeck": 60.5,
+  "cxWaist": 65.5,
+  "cxShin": 54.0
+ }
+}

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Character Generator</title>
+<style>
+  :root { --bg:#f4f2ee; --panel:#fff; --ink:#1d1c1a; --muted:#6b6862; --line:#dcd8d0; --accent:#2f5772; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; } }
+  :root[data-theme="dark"] { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:13px/1.4 system-ui, sans-serif; }
+  .app { display:grid; grid-template-columns: 300px 1fr; min-height:100vh; }
+  aside { background:var(--panel); border-right:1px solid var(--line); padding:14px; overflow:auto; max-height:100vh; }
+  main { padding:16px; min-width:0; }
+  h1 { font-size:16px; margin:0 0 10px; }
+  h2 { font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:16px 0 6px; }
+  .row { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:4px 0; }
+  .sel { display:grid; grid-template-columns: 70px 1fr; gap:6px; align-items:center; margin:3px 0; color:var(--muted); }
+  .f { display:grid; grid-template-columns: 78px 1fr 36px; gap:6px; align-items:center; margin:3px 0; color:var(--muted); }
+  .f output { color:var(--ink); font-variant-numeric:tabular-nums; }
+  .col { display:grid; grid-template-columns: 70px 28px 1fr; gap:6px; align-items:center; margin:3px 0; color:var(--muted); }
+  .col input[type=color] { width:28px; height:22px; border:0; padding:0; background:none; }
+  select, button, input[type=number] { font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:4px 8px; }
+  button { cursor:pointer; } button.primary { background:var(--accent); color:#fff; border-color:transparent; }
+  canvas { display:block; width:100%; height:auto; background:#fff; border:1px solid var(--line); border-radius:8px; }
+  .note { color:var(--muted); font-size:12px; margin-top:8px; }
+  @media (max-width: 820px) { .app { grid-template-columns: 1fr; } aside { max-height:none; border-right:0; border-bottom:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <h1>Character Generator</h1>
+  <div class="row"><button class="primary" id="rand">Randomize</button>
+    <select id="sex"><option value="">any build</option><option value="female">female</option><option value="male">male</option></select></div>
+  <div class="row"><span style="color:var(--muted)">Seed</span><input type="number" id="seed" style="width:100px"><button id="go">Generate</button></div>
+  <div class="row"><select id="orig"><option value="">Load an original…</option></select></div>
+  <h2>Pieces (from traced figures)</h2><div id="pieces"></div>
+  <h2>Colours</h2><div class="row"><select id="themes"><option value="">Apply a colour theme…</option></select><button id="keep">Original colours</button></div><div id="colors"></div>
+  <h2>Proportions</h2><div id="body"></div>
+  <div class="row" style="margin-top:12px"><button id="png">Save PNG</button><button id="json">Copy JSON</button></div>
+  <p class="note">Every shape is a traced piece of the reference art, cut at chin, waist and shin and pinned to one shared skeleton. Views without a source drawing use the fallback outfit's view (noted under the canvas).</p>
+</aside>
+<main><canvas id="stage" width="1500" height="1000"></canvas><p class="note" id="info"></p></main>
+</div>
+<script>window.TRACES = [];</script>
+<script src="../traces/asami_gown_back.js"></script>
+<script src="../traces/asami_gown_front.js"></script>
+<script src="../traces/asami_gown_side.js"></script>
+<script src="../traces/asami_suit_back.js"></script>
+<script src="../traces/asami_suit_front.js"></script>
+<script src="../traces/asami_suit_side.js"></script>
+<script src="../traces/bolin_suit_back.js"></script>
+<script src="../traces/bolin_suit_front.js"></script>
+<script src="../traces/bolin_suit_side.js"></script>
+<script src="../traces/korra_s1_back.js"></script>
+<script src="../traces/korra_s1_front.js"></script>
+<script src="../traces/korra_s1_side.js"></script>
+<script src="../traces/korra_s4_back.js"></script>
+<script src="../traces/korra_s4_front.js"></script>
+<script src="../traces/kuvira_back.js"></script>
+<script src="../traces/kuvira_front.js"></script>
+<script src="../traces/mako_sheetA_back.js"></script>
+<script src="../traces/mako_sheetA_front.js"></script>
+<script src="../traces/mako_sheetA_side.js"></script>
+<script src="../traces/metal_officer_back.js"></script>
+<script src="../traces/metal_officer_front.js"></script>
+<script src="../traces/metal_officer_side.js"></script>
+<script src="parts.js"></script>
+<script src="engine.js"></script>
+<script>
+const TRACE = Object.fromEntries(TRACES.map(t => [t.id, t]));
+const $ = id => document.getElementById(id);
+let char = originalOf('korra');
+
+function render() {
+  const c = $('stage'), g = c.getContext('2d');
+  g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+  const sk = skeleton(char.body, char.pieces), scale = 900 / sk.H, base = 960;
+  const notes = [];
+  VIEWS.forEach((v, i) => {
+    const cx = 250 + i * 500;
+    setBase(g, scale, 0, 0, scale, cx, base - sk.ground * scale);
+    const { fids } = drawCharacter(g, char, v);
+    g.setTransform(1, 0, 0, 1, 0, 0);
+    g.fillStyle = '#8a857c'; g.font = '600 13px system-ui'; g.textAlign = 'center'; g.fillText(v.toUpperCase(), cx, 24);
+    for (const p of PIECES) if (!SETS[char.pieces[p]].views[v]) notes.push(`${v} ${p}: ${SETS[char.pieces[p]].label} has no ${v} drawing, using ${fids[p]}`);
+  });
+  $('info').textContent = [...new Set(notes)].join(' · ');
+}
+
+function controls() {
+  const pc = $('pieces'); pc.innerHTML = '';
+  for (const p of ['head', 'upper', 'lower', 'feet']) {
+    const l = document.createElement('label'); l.className = 'sel'; const s = document.createElement('select');
+    for (const [k, v] of Object.entries(SETS)) if (!(p === 'feet' && v.lockFeet && !SETS[char.pieces.lower].lockFeet)) s.add(new Option(v.label, k));
+    s.value = char.pieces[p]; s.onchange = () => { char.pieces[p] = s.value; if (p === 'lower' && SETS[s.value].lockFeet) char.pieces.feet = s.value; if (p === 'lower' && !SETS[s.value].lockFeet && SETS[char.pieces.feet].lockFeet) char.pieces.feet = s.value; controls(); render(); };
+    l.append(Object.assign(document.createElement('span'), { textContent: p }), s); pc.append(l);
+  }
+  const cc = $('colors'); cc.innerHTML = '';
+  for (const r of ROLES) {
+    const l = document.createElement('label'); l.className = 'col';
+    const i = Object.assign(document.createElement('input'), { type: 'color', value: char.theme[r] || anchorOf(r) || '#888888' });
+    const st = Object.assign(document.createElement('span'), { textContent: char.theme[r] ? 'custom' : 'original' });
+    i.oninput = () => { char.theme[r] = i.value; st.textContent = 'custom'; render(); };
+    l.append(Object.assign(document.createElement('span'), { textContent: r }), i, st); cc.append(l);
+  }
+  const bc = $('body'); bc.innerHTML = '';
+  for (const [k, lo, hi] of [['head', 0.8, 1.25], ['torso', 0.85, 1.2], ['legs', 0.85, 1.2], ['shoulders', 0.8, 1.25], ['hips', 0.8, 1.25], ['headWidth', 0.85, 1.15]]) {
+    const l = document.createElement('label'); l.className = 'f';
+    const i = Object.assign(document.createElement('input'), { type: 'range', min: lo, max: hi, step: 0.01, value: char.body[k] });
+    const o = document.createElement('output'); o.textContent = (+i.value).toFixed(2);
+    i.oninput = () => { char.body[k] = +i.value; o.textContent = (+i.value).toFixed(2); render(); };
+    l.append(Object.assign(document.createElement('span'), { textContent: k }), i, o); bc.append(l);
+  }
+  if (char.seed) $('seed').value = char.seed;
+}
+function anchorOf(role) {   // the colour a role currently has in the piece that shows it most
+  const piece = { skin: 'head', hair: 'head', top: 'upper', bottom: 'lower', shoes: 'feet' }[role];
+  return FIG[figFor(char.pieces[piece], 'front')].anchors[role];
+}
+function load(c) { char = structuredClone(c); controls(); render(); }
+
+for (const [k, v] of Object.entries(SETS)) $('orig').add(new Option(v.label, k));
+for (const k of Object.keys(THEMES)) $('themes').add(new Option(k, k));
+$('orig').onchange = () => { if ($('orig').value) load(originalOf($('orig').value)); $('orig').value = ''; };
+$('themes').onchange = () => { if ($('themes').value) { Object.assign(char.theme, THEMES[$('themes').value]); controls(); render(); } $('themes').value = ''; };
+$('keep').onclick = () => { char.theme = {}; controls(); render(); };
+$('rand').onclick = () => load(randomCharacter(Math.floor(Math.random() * 1e6), { sex: $('sex').value || undefined }));
+$('go').onclick = () => load(randomCharacter(+$('seed').value || 1, { sex: $('sex').value || undefined }));
+$('png').onclick = () => { const a = document.createElement('a'); a.download = 'character.png'; a.href = $('stage').toDataURL('image/png'); a.click(); };
+$('json').onclick = () => navigator.clipboard?.writeText(JSON.stringify(char, null, 1));
+const q = new URLSearchParams(location.search);
+if (q.get('seed')) load(randomCharacter(+q.get('seed'), { sex: q.get('sex') || undefined }));
+else if (q.get('set')) load(originalOf(q.get('set')));
+else if (q.get('char')) load(JSON.parse(q.get('char')));
+else load(char);
+</script>
+</body>
+</html>
