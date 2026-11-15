@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style Generator</title>
+<style>
+  :root { --bg:#f4f2ee; --panel:#fff; --ink:#1d1c1a; --muted:#6b6862; --line:#dcd8d0; --accent:#2f5772; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; } }
+  :root[data-theme="dark"] { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--ink); font:13px/1.4 system-ui,sans-serif; }
+  .bar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+  button,input { font:inherit; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:4px 10px; }
+  button.primary { background:var(--accent); color:#fff; border-color:transparent; }
+  canvas { width:100%; height:auto; background:#fff; border:1px solid var(--line); border-radius:8px; display:block; }
+</style>
+</head>
+<body>
+<div class="bar"><b>Style Generator</b><button class="primary" id="rand">New cast</button><span>first seed</span><input id="seed" type="number" style="width:110px"><button id="go">Draw</button><button id="png">Save PNG</button></div>
+<canvas id="c" width="1600" height="900"></canvas>
+<script src="../tools/clean_lib.js"></script>
+<script src="lok_style.js"></script>
+<script src="generator.js"></script>
+<script>
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+function cast(seed) {
+  document.getElementById('seed').value = seed;
+  g.setTransform(1,0,0,1,0,0); g.fillStyle = '#fff'; g.fillRect(0,0,cv.width,cv.height);
+  for (let i = 0; i < 5; i++) {
+    const ch = GEN.random(seed + i), R = GEN.rig(ch.body), u = 830 / (R.ground + 0.15);
+    g.setTransform(u, 0, 0, u, 160 + i * 320, 870 - R.ground * u);
+    GEN.draw(g, ch);
+  }
+  g.setTransform(1,0,0,1,0,0);
+}
+document.getElementById('rand').onclick = () => cast(Math.floor(Math.random() * 1e6));
+document.getElementById('go').onclick = () => cast(+document.getElementById('seed').value || 1);
+document.getElementById('png').onclick = () => { const a = document.createElement('a'); a.download = 'cast.png'; a.href = cv.toDataURL(); a.click(); };
+cast(+(new URLSearchParams(location.search).get('seed')) || 1);
+</script>
+</body>
+</html>

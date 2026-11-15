@@ -7,7 +7,7 @@ const ROOT = path.resolve(__dirname, '..');
   const f = JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/figures.json'))).figures.find(x => x.id === id);
   const img = 'data:image/jpeg;base64,' + fs.readFileSync(path.join(ROOT, 'originals', f.src)).toString('base64');
   const b = await chromium.launch(); const p = await b.newPage();
-  await p.setContent('<body style="margin:0"></body>'); await p.addScriptTag({ path: path.join(ROOT, 'tools/clean_lib.js') });
+  await p.setContent('<body style="margin:0"></body>'); await p.addScriptTag({ path: path.join(ROOT, 'tools/clean_lib.js') }); await p.addScriptTag({ path: path.join(ROOT, 'style/lok_style.js') });
   const png = await p.evaluate(async ([fig, img, box, s, crop]) => {
     const im = await new Promise(r => { const i = new Image(); i.onload = () => r(i); i.src = img; });
     const [cx, cy, cw, ch] = crop.length ? crop : [0, 0, fig.width, fig.height];

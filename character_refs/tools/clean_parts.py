@@ -138,7 +138,7 @@ def run(spec_path):
                               outline=mp.get('outline', True), bbox=None))
         for l in mp.get('lines', []): lines.append(dict(d=cr_path(l['pts'], closed=False), w=l['w']))
     res = dict(id=S['figure'], width=x1 - x0, height=y1 - y0, ink=S.get('ink_color', '#16191b'),
-               outline_width=S.get('outline_width', 0.7), face=S.get('face'), parts=sorted(out_parts, key=lambda q: q['z']), lines=lines)
+               outline_width=S.get('outline_width', 0.7), face=S.get('face'), construct=S.get('construct', []), parts=sorted(out_parts, key=lambda q: q['z']), lines=lines)
     os.makedirs(os.path.join(ROOT, 'clean'), exist_ok=True)
     json.dump(res, open(os.path.join(ROOT, 'clean', S['figure'] + '.json'), 'w'), separators=(',', ':'))
     np.save('/tmp/owner.npy', owner)

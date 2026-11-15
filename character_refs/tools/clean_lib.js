@@ -13,7 +13,10 @@ function drawClean(g, fig, opts = {}) {
   const ink = opts.ink || fig.ink, ow = (opts.outline ?? fig.outline_width);
   const color = opts.color || ((p, c) => c);
   g.lineJoin = 'round'; g.lineCap = 'round';
-  for (const p of fig.parts) {
+  const items = [...fig.parts.map(p => ({ z: p.z, part: p })), ...(fig.construct || []).map(c => ({ z: c.z, con: c }))].sort((a, b) => a.z - b.z);
+  for (const it of items) {
+    if (it.con) { if (typeof LOK !== 'undefined') LOK[it.con.type](g, it.con); continue; }
+    const p = it.part;
     const path = new Path2D(); for (const d of p.paths) cmdPath(path, d);
     g.fillStyle = color(p, p.fill, 'base'); g.fill(path, 'evenodd');
     if (p.tones.length) {
