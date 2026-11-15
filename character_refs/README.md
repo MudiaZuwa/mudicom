@@ -3,6 +3,9 @@
 Every reference image is traced into vector shapes that are drawn with the HTML Canvas API.
 This library is the source material for the character generator.
 
+**[DRAWING_GUIDE.md](DRAWING_GUIDE.md)** — how the characters are drawn: the art style, body, clothes and
+faces, with measurements and illustrations (`guide/`).
+
 ## Contents
 - `originals/` — the 56 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53).
 - `traces/<id>.js` — one traced figure per file (107 figures: 46 bodies and poses, 61 faces and heads). Each file adds one object to `window.TRACES`.
