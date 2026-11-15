@@ -4,7 +4,7 @@ Every reference image is traced into vector shapes that are drawn with the HTML 
 This library is the source material for the character generator.
 
 ## Contents
-- `originals/` — the 16 unique reference images (duplicates removed), named by character and content.
+- `originals/` — the 32 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets that are traced; 17–32 are face close-ups and head sketches, not traced yet.
 - `traces/<id>.js` — one traced figure per file (46 figures). Each file adds one object to `window.TRACES`.
 - `gallery.html` — opens in a browser; draws every traced figure with Canvas next to its original crop.
   Filter by character, sex, view or outfit piece. Click a figure to enlarge.
