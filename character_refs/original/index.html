@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naori — original character</title>
+<style>
+  body { margin: 0; padding: 16px; background: #f4f2ee; color: #1d1c1a; font: 14px/1.4 system-ui, sans-serif; }
+  canvas { display: block; width: 100%; max-width: 1400px; height: auto; background: #fff; border: 1px solid #dcd8d0; border-radius: 8px; }
+</style>
+</head>
+<body>
+<p><b>Naori</b> — an original character drawn with the Canvas API (<code>naori.js</code>). Full figure and close-up.</p>
+<canvas id="c" width="2200" height="1245"></canvas>
+<script src="naori.js"></script>
+<script>
+const c = document.getElementById('c'), g = c.getContext('2d'), U = 150, H = c.height, bodyW = 540;
+g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, H);
+g.setTransform(U, 0, 0, U, bodyW / 2, 30); NAORI.draw(g); g.setTransform(1, 0, 0, 1, 0, 0);
+const k = H / 2.45;
+g.save(); g.beginPath(); g.rect(bodyW, 0, c.width - bodyW, H); g.clip();
+g.setTransform(k, 0, 0, k, bodyW + (c.width - bodyW) / 2, 0.2 * k); NAORI.draw(g); g.restore();
+</script>
+</body>
+</html>

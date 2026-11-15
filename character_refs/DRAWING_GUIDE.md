@@ -15,7 +15,7 @@ Contents
 6. [Faces](#6-faces)
 7. [Hair](#7-hair)
 8. [Character sheets](#8-character-sheets)
-9. [Drawing a new character in this style](#9-drawing-a-new-character-in-this-style)
+9. [Drawing a new character in this style](#9-drawing-a-new-character-in-this-style), with [a worked example](#9a-a-worked-example-and-what-the-first-attempt-got-wrong)
 10. [Where the current generators depart from the references](#10-where-the-current-generators-depart-from-the-references)
 11. [What is uncertain or missing](#11-what-is-uncertain-or-missing)
 
@@ -193,7 +193,13 @@ pairs:
 
 ### 3.4 Line
 
-- One ink colour per figure, near black with a slight tint (`#0f1514`, `#171814`, `#1f1712`).
+- One ink colour per figure, near black with a slight tint (`#0f1514`, `#171814`, `#1f1712`); in the
+  close-ups it is a warm near-black (`#1c0a05`, `#15140f`).
+- Outlines are hairlines of nearly constant width. Lines that end inside a form (folds, the mouth,
+  hair strands) taper to a point at the open end, so on Canvas they are better drawn as thin filled
+  slivers than as strokes.
+- Lines inside the face are brown, not ink: the mouth samples at about `#5a2d15` on Kuvira.
+- Shadow shapes are never outlined.
 - Line weight in show close-ups is about 0.35–0.6% of head height, which is about 0.05–0.07% of
   body height. On the body sheets the lines are at the limit of the image resolution (one pixel,
   0.12–0.2% of figure height), so those figures only give an upper bound.
@@ -279,15 +285,21 @@ What this shows:
 
 ### 4.4 Hands and feet
 
-- A hanging hand is three overlapping forms: the back of the hand, the curled finger mass, and the
-  thumb in front. At body-sheet size the fingers are suggested by two short lines; in close-ups
-  (Kuvira's and Mako's gloved hands) each finger is its own rounded form.
+- A hand is one silhouette for the back of the hand and the fingers. There is no line across the
+  wrist or the knuckles; a cuff or sleeve edge covers the wrist.
+- Fingers are always distinct. At body-sheet size they show as separate fingertips with short lines
+  between them; in close-ups (Kuvira's and Mako's gloved hands) each finger is an angular, slightly
+  boxy form with flat planes and squared tips.
+- The thumb overlaps or is overlapped by the hand, so its root has no outline.
 - A fist is the back of the hand, a row of four rounded finger ends (index largest) and the thumb
   wrapped across the front, with one knuckle crease.
-- Both are built by rule in `style/lok_style.js` (`LOK.hand`), measured from the Korra references.
+- `LOK.hand` in `style/lok_style.js` does not follow this: it strokes the back of the hand, the
+  finger mass and the thumb as three closed forms, which leaves seams across the hand.
+  `original/naori.js` has a hand built the way described here.
 - Feet are always in footwear. A boot is one silhouette for shaft and foot, a shadow strip down one
-  side, a thin shadow under the sole, one or two crease lines at the toe, and whatever cuff or
-  strap the design has (`LOK.furBoot`).
+  side, a darker sole strip along the bottom, one or two crease lines at the toe, and whatever cuff
+  or strap the design has. Straps follow the boot's surface and stop at its outline. Feet are about
+  0.9 head long and are usually seen turned outward.
 
 ### 4.5 Views
 
@@ -366,6 +378,10 @@ From the clean Korra figure, back to front. Other outfits follow the same logic.
 
 The rule behind the order: whatever sits further out on the body is drawn later, and trims are
 drawn after the thing they trim.
+
+Footwear is the exception that depends on the design. It is drawn first when the trousers hang over
+the boot top (Korra S1). When the trousers tuck into the boot or greave (Korra S4, Asami, Kuvira),
+the boot is drawn after the leg garment.
 
 ### 5.4 How cloth is drawn
 
@@ -461,12 +477,15 @@ wider face.
   lower lid line.
 - **Brow.** A solid filled shape in the hair colour, thick at the inner end and tapering outward.
   It is a shape, not a stroke.
-- **Nose.** From the front: a small shadow wedge under the tip, two tiny nostril marks, and one
-  short line for the bridge on the shadow side only. There is no outline around the nose.
+- **Nose.** From the front the nose has no outline. Korra's and Kuvira's are shadow shapes only: a
+  small plane beside the bridge on the shadow side, a wedge under the tip, and two tiny nostril
+  marks. Asami's and Mako's add one short line for the bridge on the shadow side.
 - **Mouth.** One line, slightly curved, sometimes with a short line under it for the lower lip.
   Only Asami has filled lips (dark red, upper lip darker than lower).
-- **Ear.** A skin shape at the level between the eyes and the nose base, with one or two short
-  inner lines.
+- **Ear.** A C-shaped rim whose top is level with the brow and whose lobe is level with the nose
+  base, about 0.1 head wide and 0.25 tall from the front. Inside it: one line following the rim, a
+  shorter second fold, and a shadow tone in the bowl. It sits behind the jaw line, partly under
+  the hair.
 - **Jaw.** One continuous outline from ear to chin with a visible corner. It is the main thing that
   separates one face shape from another.
 
@@ -476,7 +495,9 @@ wider face.
 - There is always a shadow under the jaw on the neck.
 - In many screenshots a single large shadow covers one side of the face, with a hard edge running
   from the brow down the side of the nose to the chin. Its side depends on the scene's light.
-- Small shadow shapes sit under the fringe, under the nose tip and under the lower lip.
+- Small shadow shapes sit under the nose tip and under the lower lip, and in the eye sockets
+  between the inner brow and the lid. A cast shadow under the fringe appears in some shots
+  (Asami, image 27) and not in others (Korra, image 18).
 - Cheeks are not shaded or coloured.
 
 ### 6.4 Three-quarter view
@@ -646,6 +667,34 @@ This is the procedure the references imply, in Canvas terms.
    knuckle crease.
 
 ---
+
+## 9a. A worked example, and what the first attempt got wrong
+
+`original/naori.js` draws an original character (new face, hair, outfit and palette) with these
+rules. Open `original/index.html` to see it.
+
+![Original character](guide/original_naori.png)
+
+The first versions followed every measurement in this guide and still did not look like the style.
+What was wrong, and what fixed it:
+
+| First attempt | What the references do | Fix |
+|---|---|---|
+| Shapes invented from proportions: an egg for the head, tubes for arms, ovals for the braid | Contours have a specific rhythm: long near-straight runs, a few corners | Head outline, eyes, ears, hand and boot were read off the reference images and then varied |
+| Left and right mirrored exactly | Nothing is mirror-symmetric: hair parts off-centre, the gaze is off-axis, one mouth corner lifts | Off-centre part and fringe, shifted irises, asymmetric mouth, slightly different arm angles |
+| Every line a uniform black stroke | Hairline outlines; interior lines taper; face lines are brown | Outlines stroked thin; folds, strands and face lines drawn as tapering filled slivers |
+| Hands as stacked blocks with seams, no fingers | One silhouette, distinct fingers | One hand path with fingertips; tapering lines between fingers |
+| Ears as handles on the sides of the head | C-shaped rim with inner folds, tucked behind the jaw | Redrawn from the Bolin and Mako ears |
+| Nose as a bridge line plus a blob | Shadow shapes without outline | Bridge plane, under-tip wedge, nostril marks |
+| Braid as a string of outlined beads | Hair is one mass | One zig-zag silhouette; the plaits are interior lines |
+| Boots as rounded slippers with a ring round the ankle | Shaft and long foot, sole strip, straps that follow the surface | Rebuilt on the Korra S4 boot |
+
+The measurements in this guide say where things go and what colour they are. They do not say what
+the contours look like. That has to come from the reference shapes themselves.
+
+What still separates the example from a show frame: the body is a straight-on, evenly weighted
+stand; the cloth has fewer and plainer folds; and the shadow shapes are simpler than the designed
+planes in the close-ups.
 
 ## 10. Where the current generators depart from the references
 
