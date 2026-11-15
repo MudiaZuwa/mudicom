@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traced Reference Library</title>
+<style>
+  :root { --bg:#f4f2ee; --panel:#fff; --ink:#1d1c1a; --muted:#6b6862; --line:#dcd8d0; --accent:#2f5772; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; } }
+  :root[data-theme="dark"] { --bg:#1b1a19; --panel:#262523; --ink:#ecebe8; --muted:#a19d96; --line:#3a3835; --accent:#8fb8d6; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--ink); font:13px/1.4 system-ui, sans-serif; }
+  header { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  h1 { font-size:18px; margin:0; }
+  .filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  select, button { font:inherit; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:4px 8px; }
+  label { color:var(--muted); display:flex; gap:6px; align-items:center; }
+  h2 { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:22px 0 8px; }
+  .grid { display:flex; flex-wrap:wrap; gap:12px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px; cursor:pointer; }
+  .card .pair { display:flex; gap:6px; align-items:flex-end; }
+  .card canvas, .card img { display:block; height:260px; width:auto; }
+  .card img { opacity:.95; }
+  .meta { margin-top:6px; font-size:11px; color:var(--muted); max-width:340px; }
+  .meta b { color:var(--ink); font-weight:600; }
+  .tags span { display:inline-block; border:1px solid var(--line); border-radius:10px; padding:0 6px; margin:2px 2px 0 0; }
+  dialog { border:1px solid var(--line); border-radius:10px; background:var(--panel); color:var(--ink); max-width:96vw; max-height:94vh; padding:12px; }
+  dialog canvas { max-width:100%; max-height:80vh; display:block; }
+  .count { color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Traced Reference Library <span class="count" id="count"></span></h1>
+  <div class="filters">
+    <select id="fChar"><option value="">All characters</option></select>
+    <select id="fSex"><option value="">Any sex</option><option>female</option><option>male</option></select>
+    <select id="fView"><option value="">Any view</option></select>
+    <select id="fTag"><option value="">Any outfit piece</option></select>
+    <label><input type="checkbox" id="showOrig" checked> Show original</label>
+  </div>
+</header>
+<div id="lib"></div>
+<dialog id="dlg"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b id="dlgTitle"></b><button id="close">Close</button></div><canvas id="big"></canvas></dialog>
+<script>window.TRACES = [];</script>
+<script src="tools/render_lib.js"></script>
+<script src="traces/mako_lineart_front.js"></script>
+<script src="traces/mako_face_closeup.js"></script>
+<script src="traces/mako_firebending.js"></script>
+<script src="traces/mako_sheetA_3q.js"></script>
+<script src="traces/mako_sheetA_front.js"></script>
+<script src="traces/mako_sheetA_side.js"></script>
+<script src="traces/mako_sheetA_back.js"></script>
+<script src="traces/mako_sheetB_3q.js"></script>
+<script src="traces/mako_sheetB_front.js"></script>
+<script src="traces/mako_sheetB_side.js"></script>
+<script src="traces/mako_sheetB_back.js"></script>
+<script src="traces/mako_front_color.js"></script>
+<script src="traces/korra_s1_3q.js"></script>
+<script src="traces/korra_s1_head_3q.js"></script>
+<script src="traces/korra_s1_front.js"></script>
+<script src="traces/korra_s1_head_front.js"></script>
+<script src="traces/korra_s1_back.js"></script>
+<script src="traces/korra_s1_head_side.js"></script>
+<script src="traces/korra_s1_side.js"></script>
+<script src="traces/korra_s4_avatar_state.js"></script>
+<script src="traces/korra_s4_3q.js"></script>
+<script src="traces/korra_s4_front.js"></script>
+<script src="traces/korra_s4_back.js"></script>
+<script src="traces/korra_pair_3q.js"></script>
+<script src="traces/korra_pair_front.js"></script>
+<script src="traces/korra_leaning.js"></script>
+<script src="traces/korra_s4_front_solo.js"></script>
+<script src="traces/metal_officer_3q.js"></script>
+<script src="traces/metal_officer_front.js"></script>
+<script src="traces/metal_officer_back.js"></script>
+<script src="traces/metal_officer_side.js"></script>
+<script src="traces/bolin_suit_side.js"></script>
+<script src="traces/bolin_suit_3q.js"></script>
+<script src="traces/bolin_suit_front.js"></script>
+<script src="traces/bolin_suit_back.js"></script>
+<script src="traces/kuvira_front.js"></script>
+<script src="traces/kuvira_back.js"></script>
+<script src="traces/asami_suit_3q.js"></script>
+<script src="traces/asami_suit_front.js"></script>
+<script src="traces/asami_suit_side.js"></script>
+<script src="traces/asami_suit_back.js"></script>
+<script src="traces/asami_cape_front.js"></script>
+<script src="traces/asami_cape_3q.js"></script>
+<script src="traces/asami_gown_front.js"></script>
+<script src="traces/asami_gown_back.js"></script>
+<script src="traces/asami_gown_side.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const uniq = a => [...new Set(a)].sort();
+for (const c of uniq(TRACES.map(t => t.character))) $('fChar').add(new Option(c, c));
+for (const v of uniq(TRACES.map(t => t.view))) $('fView').add(new Option(v, v));
+for (const g of uniq(TRACES.flatMap(t => t.outfit))) $('fTag').add(new Option(g, g));
+
+function drawInto(canvas, t, h) {
+  const s = h / t.height; canvas.width = Math.ceil(t.width * s * devicePixelRatio); canvas.height = Math.ceil(h * devicePixelRatio);
+  canvas.style.height = h + 'px'; canvas.style.width = (t.width * s) + 'px';
+  const g = canvas.getContext('2d'); g.setTransform(s * devicePixelRatio, 0, 0, s * devicePixelRatio, 0, 0); drawTrace(g, t);
+}
+function render() {
+  const fc = $('fChar').value, fs = $('fSex').value, fv = $('fView').value, ft = $('fTag').value, orig = $('showOrig').checked;
+  const list = TRACES.filter(t => (!fc || t.character === fc) && (!fs || t.sex === fs) && (!fv || t.view === fv) && (!ft || t.outfit.includes(ft)));
+  $('count').textContent = `· ${list.length} of ${TRACES.length} figures`;
+  const lib = $('lib'); lib.innerHTML = '';
+  for (const src of uniq(list.map(t => t.src))) {
+    const h = document.createElement('h2'); h.textContent = src; lib.append(h);
+    const grid = document.createElement('div'); grid.className = 'grid'; lib.append(grid);
+    for (const t of list.filter(x => x.src === src)) {
+      const card = document.createElement('div'); card.className = 'card';
+      const pair = document.createElement('div'); pair.className = 'pair';
+      const H = 260;
+      if (orig) {   // original crop, for comparison
+        const oc = document.createElement('canvas'); const im = new Image();
+        im.onload = () => { const s = H / t.height; oc.width = Math.ceil(t.width * s * devicePixelRatio); oc.height = Math.ceil(H * devicePixelRatio); oc.style.height = H + 'px'; oc.style.width = t.width * s + 'px';
+          oc.getContext('2d').drawImage(im, t.box[0], t.box[1], t.width, t.height, 0, 0, oc.width, oc.height); };
+        im.src = 'originals/' + t.src; pair.append(oc);
+      }
+      const cv = document.createElement('canvas'); drawInto(cv, t, H); pair.append(cv);
+      card.append(pair);
+      const meta = document.createElement('div'); meta.className = 'meta';
+      meta.innerHTML = `<b>${t.id}</b> · ${t.character} · ${t.sex} · ${t.view} · ${t.paths.length} shapes<div class="tags">${t.outfit.map(o => `<span>${o}</span>`).join('')}</div>`;
+      card.append(meta);
+      card.onclick = () => { $('dlgTitle').textContent = t.id; drawInto($('big'), t, Math.min(innerHeight * 0.8, t.height * 3)); $('dlg').showModal(); };
+      grid.append(card);
+    }
+  }
+}
+['fChar', 'fSex', 'fView', 'fTag', 'showOrig'].forEach(id => $(id).onchange = render);
+$('close').onclick = () => $('dlg').close();
+render();
+</script>
+</body>
+</html>

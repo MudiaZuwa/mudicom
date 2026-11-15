@@ -1,0 +1,1042 @@
+{
+ "_doc": "Every figure in every reference image. box = [x0,y0,x1,y1] in source pixels. exclude = rects removed (signatures/watermarks). view: front | three_quarter | side | back | head_* | pose. thr = mask threshold (Lab distance from background model); inpaint = rects whose dark strokes are inpainted (watermarks over the figure).. paper = photographed sheet, use local paper-brightness background model.",
+ "figures": [
+  {
+   "id": "mako_lineart_front",
+   "src": "01_mako_front_lineart.png",
+   "box": [
+    188,
+    5,
+    388,
+    552
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "front",
+   "exclude": [
+    [
+     300,
+     505,
+     554,
+     554
+    ]
+   ]
+  },
+  {
+   "id": "mako_face_closeup",
+   "src": "02_mako_face_closeup.jpg",
+   "box": [
+    20,
+    40,
+    554,
+    554
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "scarf",
+    "high_collar"
+   ],
+   "view": "head_front",
+   "inpaint": [
+    [
+     345,
+     512,
+     470,
+     550
+    ]
+   ]
+  },
+  {
+   "id": "mako_firebending",
+   "src": "03_mako_firebending_pose.jpg",
+   "box": [
+    180,
+    0,
+    380,
+    554
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "pose"
+  },
+  {
+   "id": "mako_sheetA_3q",
+   "src": "04_mako_turnaround_a.jpg",
+   "box": [
+    18,
+    0,
+    162,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "three_quarter",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetA_front",
+   "src": "04_mako_turnaround_a.jpg",
+   "box": [
+    160,
+    0,
+    318,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "front",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetA_side",
+   "src": "04_mako_turnaround_a.jpg",
+   "box": [
+    318,
+    0,
+    452,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "side",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetA_back",
+   "src": "04_mako_turnaround_a.jpg",
+   "box": [
+    436,
+    0,
+    601,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "back",
+   "thr": 18,
+   "exclude": [
+    [
+     592,
+     0,
+     602,
+     462
+    ]
+   ],
+   "paper": true
+  },
+  {
+   "id": "mako_sheetB_3q",
+   "src": "05_mako_turnaround_b.jpg",
+   "box": [
+    18,
+    0,
+    162,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "three_quarter",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetB_front",
+   "src": "05_mako_turnaround_b.jpg",
+   "box": [
+    160,
+    0,
+    318,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "front",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetB_side",
+   "src": "05_mako_turnaround_b.jpg",
+   "box": [
+    318,
+    0,
+    452,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "side",
+   "thr": 18,
+   "paper": true
+  },
+  {
+   "id": "mako_sheetB_back",
+   "src": "05_mako_turnaround_b.jpg",
+   "box": [
+    436,
+    0,
+    602,
+    462
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "back",
+   "thr": 30,
+   "exclude": [
+    [
+     592,
+     0,
+     602,
+     462
+    ]
+   ],
+   "paper": true
+  },
+  {
+   "id": "mako_front_color",
+   "src": "06_mako_front_color.jpg",
+   "box": [
+    120,
+    25,
+    358,
+    649
+   ],
+   "character": "Mako",
+   "sex": "male",
+   "outfit": [
+    "tunic",
+    "scarf",
+    "knickers",
+    "leg_wraps",
+    "gloves"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "korra_s1_3q",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    12,
+    0,
+    152,
+    468
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "three_quarter",
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_head_3q",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    126,
+    0,
+    200,
+    122
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair"
+   ],
+   "view": "head_three_quarter",
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_front",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    186,
+    0,
+    336,
+    468
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "front",
+   "exclude": [
+    [
+     300,
+     0,
+     336,
+     118
+    ]
+   ],
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_head_front",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    300,
+    0,
+    382,
+    118
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair"
+   ],
+   "view": "head_front",
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_back",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    372,
+    0,
+    508,
+    468
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "back",
+   "exclude": [
+    [
+     458,
+     0,
+     508,
+     92
+    ]
+   ],
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_head_side",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    455,
+    0,
+    545,
+    122
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "topknot_hair"
+   ],
+   "view": "head_side",
+   "thr": 18
+  },
+  {
+   "id": "korra_s1_side",
+   "src": "07_korra_turnaround_with_heads.jpg",
+   "box": [
+    538,
+    0,
+    654,
+    468
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "side",
+   "thr": 18
+  },
+  {
+   "id": "korra_s4_avatar_state",
+   "src": "08_korra_s4_turnaround_avatar_state.jpg",
+   "box": [
+    0,
+    0,
+    182,
+    476
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "gauntlets",
+    "pelt_skirt",
+    "baggy_pants",
+    "boots",
+    "glow"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "korra_s4_3q",
+   "src": "08_korra_s4_turnaround_avatar_state.jpg",
+   "box": [
+    176,
+    0,
+    316,
+    476
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "long_gauntlets",
+    "belt_medallion",
+    "pelt_skirt",
+    "baggy_pants",
+    "boots",
+    "bob_hair"
+   ],
+   "view": "three_quarter"
+  },
+  {
+   "id": "korra_s4_front",
+   "src": "08_korra_s4_turnaround_avatar_state.jpg",
+   "box": [
+    316,
+    0,
+    506,
+    476
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "long_gauntlets",
+    "belt_medallion",
+    "pelt_skirt",
+    "baggy_pants",
+    "boots",
+    "bob_hair"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "korra_s4_back",
+   "src": "08_korra_s4_turnaround_avatar_state.jpg",
+   "box": [
+    490,
+    0,
+    643,
+    476
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "long_gauntlets",
+    "belt_medallion",
+    "pelt_skirt",
+    "baggy_pants",
+    "boots",
+    "bob_hair"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "korra_pair_3q",
+   "src": "09_korra_front_pair.jpg",
+   "box": [
+    32,
+    12,
+    222,
+    637
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "three_quarter"
+  },
+  {
+   "id": "korra_pair_front",
+   "src": "09_korra_front_pair.jpg",
+   "box": [
+    226,
+    8,
+    476,
+    637
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "korra_leaning",
+   "src": "10_korra_leaning_pose.jpg",
+   "box": [
+    405,
+    22,
+    870,
+    1185
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "fur_boots"
+   ],
+   "view": "pose"
+  },
+  {
+   "id": "korra_s4_front_solo",
+   "src": "11_korra_s4_front.jpg",
+   "box": [
+    100,
+    0,
+    300,
+    516
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "long_gauntlets",
+    "belt_medallion",
+    "pelt_skirt",
+    "baggy_pants",
+    "boots",
+    "bob_hair"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "metal_officer_3q",
+   "src": "12_metalbender_officer_female_turnaround.jpg",
+   "box": [
+    0,
+    0,
+    166,
+    509
+   ],
+   "character": "Metalbender officer",
+   "sex": "female",
+   "outfit": [
+    "armor_uniform",
+    "high_collar",
+    "belt_buckle",
+    "tassets",
+    "knee_guards",
+    "armored_boots"
+   ],
+   "view": "three_quarter",
+   "exclude": [
+    [
+     95,
+     410,
+     166,
+     460
+    ]
+   ]
+  },
+  {
+   "id": "metal_officer_front",
+   "src": "12_metalbender_officer_female_turnaround.jpg",
+   "box": [
+    152,
+    0,
+    350,
+    509
+   ],
+   "character": "Metalbender officer",
+   "sex": "female",
+   "outfit": [
+    "armor_uniform",
+    "high_collar",
+    "belt_buckle",
+    "tassets",
+    "knee_guards",
+    "armored_boots"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "metal_officer_back",
+   "src": "12_metalbender_officer_female_turnaround.jpg",
+   "box": [
+    330,
+    0,
+    498,
+    509
+   ],
+   "character": "Metalbender officer",
+   "sex": "female",
+   "outfit": [
+    "armor_uniform",
+    "high_collar",
+    "belt",
+    "tassets",
+    "armored_boots",
+    "back_holster"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "metal_officer_side",
+   "src": "12_metalbender_officer_female_turnaround.jpg",
+   "box": [
+    494,
+    0,
+    602,
+    509
+   ],
+   "character": "Metalbender officer",
+   "sex": "female",
+   "outfit": [
+    "armor_uniform",
+    "high_collar",
+    "belt",
+    "tassets",
+    "knee_guards",
+    "armored_boots"
+   ],
+   "view": "side"
+  },
+  {
+   "id": "bolin_suit_side",
+   "src": "13_bolin_suit_turnaround.jpg",
+   "box": [
+    6,
+    8,
+    86,
+    279
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "suit_jacket",
+    "mandarin_vest",
+    "knickers",
+    "socks",
+    "shoes"
+   ],
+   "view": "side",
+   "exclude": [
+    [
+     70,
+     225,
+     110,
+     255
+    ]
+   ]
+  },
+  {
+   "id": "bolin_suit_3q",
+   "src": "13_bolin_suit_turnaround.jpg",
+   "box": [
+    92,
+    8,
+    186,
+    279
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "suit_jacket",
+    "mandarin_vest",
+    "knickers",
+    "socks",
+    "shoes"
+   ],
+   "view": "three_quarter",
+   "exclude": [
+    [
+     70,
+     225,
+     104,
+     255
+    ]
+   ]
+  },
+  {
+   "id": "bolin_suit_front",
+   "src": "13_bolin_suit_turnaround.jpg",
+   "box": [
+    186,
+    8,
+    300,
+    279
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "suit_jacket",
+    "mandarin_vest",
+    "knickers",
+    "socks",
+    "shoes"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "bolin_suit_back",
+   "src": "13_bolin_suit_turnaround.jpg",
+   "box": [
+    298,
+    8,
+    396,
+    279
+   ],
+   "character": "Bolin",
+   "sex": "male",
+   "outfit": [
+    "suit_jacket",
+    "knickers",
+    "socks",
+    "shoes"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "kuvira_front",
+   "src": "14_kuvira_armor_front_back.jpg",
+   "box": [
+    6,
+    4,
+    172,
+    543
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "long_coat",
+    "metal_armor",
+    "pauldrons",
+    "high_collar",
+    "belt_buckle",
+    "tabard",
+    "bracers",
+    "boots",
+    "knee_armor",
+    "bun_hair"
+   ],
+   "view": "three_quarter"
+  },
+  {
+   "id": "kuvira_back",
+   "src": "14_kuvira_armor_front_back.jpg",
+   "box": [
+    192,
+    4,
+    393,
+    543
+   ],
+   "character": "Kuvira",
+   "sex": "female",
+   "outfit": [
+    "long_coat",
+    "metal_armor",
+    "pauldrons",
+    "high_collar",
+    "belt",
+    "bracers",
+    "boots",
+    "knee_armor",
+    "bun_hair"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "asami_suit_3q",
+   "src": "15_asami_jacket_skirt_turnaround.jpg",
+   "box": [
+    84,
+    40,
+    204,
+    418
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "jacket",
+    "lapels",
+    "skirt",
+    "stockings",
+    "knee_boots",
+    "long_wavy_hair"
+   ],
+   "view": "three_quarter"
+  },
+  {
+   "id": "asami_suit_front",
+   "src": "15_asami_jacket_skirt_turnaround.jpg",
+   "box": [
+    200,
+    40,
+    320,
+    420
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "jacket",
+    "lapels",
+    "skirt",
+    "stockings",
+    "knee_boots",
+    "long_wavy_hair"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "asami_suit_side",
+   "src": "15_asami_jacket_skirt_turnaround.jpg",
+   "box": [
+    318,
+    40,
+    425,
+    418
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "jacket",
+    "lapels",
+    "skirt",
+    "stockings",
+    "knee_boots",
+    "long_wavy_hair"
+   ],
+   "view": "side"
+  },
+  {
+   "id": "asami_suit_back",
+   "src": "15_asami_jacket_skirt_turnaround.jpg",
+   "box": [
+    423,
+    40,
+    612,
+    412
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "jacket",
+    "skirt",
+    "stockings",
+    "knee_boots",
+    "long_wavy_hair"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "asami_cape_front",
+   "src": "16_asami_cape_and_gown_turnaround.jpg",
+   "box": [
+    0,
+    3,
+    114,
+    366
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "capelet",
+    "blouse",
+    "pencil_skirt",
+    "tights",
+    "ankle_boots"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "asami_cape_3q",
+   "src": "16_asami_cape_and_gown_turnaround.jpg",
+   "box": [
+    112,
+    3,
+    214,
+    366
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "capelet",
+    "blouse",
+    "pencil_skirt",
+    "tights",
+    "ankle_boots"
+   ],
+   "view": "three_quarter"
+  },
+  {
+   "id": "asami_gown_front",
+   "src": "16_asami_cape_and_gown_turnaround.jpg",
+   "box": [
+    208,
+    3,
+    320,
+    366
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "gown",
+    "off_shoulder_sleeves",
+    "sash",
+    "bracelets",
+    "necklace",
+    "long_wavy_hair"
+   ],
+   "view": "front"
+  },
+  {
+   "id": "asami_gown_back",
+   "src": "16_asami_cape_and_gown_turnaround.jpg",
+   "box": [
+    315,
+    3,
+    427,
+    366
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "gown",
+    "off_shoulder_sleeves",
+    "sash",
+    "bracelets",
+    "long_wavy_hair"
+   ],
+   "view": "back"
+  },
+  {
+   "id": "asami_gown_side",
+   "src": "16_asami_cape_and_gown_turnaround.jpg",
+   "box": [
+    426,
+    3,
+    545,
+    366
+   ],
+   "character": "Asami",
+   "sex": "female",
+   "outfit": [
+    "gown",
+    "off_shoulder_sleeves",
+    "sash",
+    "bracelets",
+    "long_wavy_hair"
+   ],
+   "view": "side"
+  }
+ ]
+}
