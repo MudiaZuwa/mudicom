@@ -285,6 +285,9 @@ What this shows:
 
 ### 4.4 Hands and feet
 
+- A hand hanging at rest is a loose fist: the fingers curl under and are foreshortened, and the
+  thumb lies in front on the body side. It is about as wide as it is long. Fingers never hang
+  straight at full length (Korra images 09 and 11, Mako image 06).
 - A hand is one silhouette for the back of the hand and the fingers. There is no line across the
   wrist or the knuckles; a cuff or sleeve edge covers the wrist.
 - Fingers are always distinct. At body-sheet size they show as separate fingertips with short lines
@@ -683,7 +686,10 @@ What was wrong, and what fixed it:
 | Shapes invented from proportions: an egg for the head, tubes for arms, ovals for the braid | Contours have a specific rhythm: long near-straight runs, a few corners | Head outline, eyes, ears, hand and boot were read off the reference images and then varied |
 | Left and right mirrored exactly | Nothing is mirror-symmetric: hair parts off-centre, the gaze is off-axis, one mouth corner lifts | Off-centre part and fringe, shifted irises, asymmetric mouth, slightly different arm angles |
 | Every line a uniform black stroke | Hairline outlines; interior lines taper; face lines are brown | Outlines stroked thin; folds, strands and face lines drawn as tapering filled slivers |
-| Hands as stacked blocks with seams, no fingers | One silhouette, distinct fingers | One hand path with fingertips; tapering lines between fingers |
+| Hands as stacked blocks with seams, then as flat hands with straight dangling fingers | One silhouette; at rest a loose fist with the fingers curled under | One path for the fist; tapering lines between the fingers; thumb in front |
+| Garments as smooth convex curves (a pillow-like mantle, tube trousers) | Long near-straight runs that break at corners | Mantle, sleeves and trousers redrawn with straight runs and sharp corners |
+| Shadows as a rim offset from the outline | Flat planes: the side turned from the light, and under overlaps | Each form given designed shadow planes |
+| A smooth U-shaped jaw | A corner below the ear, then a straight run to the chin (soft on Korra and Kuvira, absent on Asami) | Jaw redrawn with a corner |
 | Ears as handles on the sides of the head | C-shaped rim with inner folds, tucked behind the jaw | Redrawn from the Bolin and Mako ears |
 | Nose as a bridge line plus a blob | Shadow shapes without outline | Bridge plane, under-tip wedge, nostril marks |
 | Braid as a string of outlined beads | Hair is one mass | One zig-zag silhouette; the plaits are interior lines |
@@ -692,9 +698,9 @@ What was wrong, and what fixed it:
 The measurements in this guide say where things go and what colour they are. They do not say what
 the contours look like. That has to come from the reference shapes themselves.
 
-What still separates the example from a show frame: the body is a straight-on, evenly weighted
-stand; the cloth has fewer and plainer folds; and the shadow shapes are simpler than the designed
-planes in the close-ups.
+What still separates the example from a show frame: the pose is only slightly asymmetric (one arm
+out, one foot turned further) with no real weight shift; the cloth has fewer and plainer folds;
+the fists are simple next to Kuvira's hands; and her braid has no reference to be checked against.
 
 ## 10. Where the current generators depart from the references
 
