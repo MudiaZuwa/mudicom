@@ -2,7 +2,7 @@
 
 This guide records what the reference library shows about how these characters are drawn: the
 art style, the body, the clothes and the faces, and how each of those is expressed as Canvas
-drawing. It is written from the 107 traced figures in `traces/` and their 56 source images in
+drawing. It is written from the 118 traced figures in `traces/` and their 65 source images in
 `originals/`.
 
 Contents
@@ -27,8 +27,9 @@ Contents
 
 | Kind | Images | Use |
 |---|---|---|
-| Full-body sheets in the show's style | 04–09, 11–16, 53 | Body, clothes, proportions, colour. 04, 05, 07 and 53 are photographs of printed pages, so their colours are shifted. 12 and 13 carry an artist signature. |
+| Full-body sheets in the show's style | 04–09, 11–16, 53, 65 | Body, clothes, proportions, colour. 04, 05, 07 and 53 are photographs of printed pages, so their colours are shifted. 12 and 13 carry an artist signature. |
 | Show screenshots (close-ups) | 17–20, 24, 26–29, 34–41, 43, 45–52 | Faces, line weight, face shading. Colours carry the scene's lighting. |
+| Hand references | 57–65 | Hands and fingers. 57, 59, 62–65 are in the show's style; 58 is sketchily shaded; 60 and 61 are fan art and a comic-style drawing. |
 | Step-by-step tutorial drawings | 01–03, 10, 22, 23, 25, 44, 56 | Construction of the face and figure. Much heavier outlines than the show. |
 | Sketches and other fan art | 21, 30–33, 42, 54, 55 | Head construction at many angles (Bolin), extra views. Not show-accurate in line or colour. |
 

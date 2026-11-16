@@ -39,7 +39,7 @@ curves except where `sharp` is 1. Shapes are stacked: each colour layer is drawn
 | Mako (6 images) | lineart front, face close-up, firebending pose, two 4-view turnarounds, colour front |
 | Korra season 1 sheet | 3/4, front, back, side + three head studies |
 | Korra season 4 sheet | avatar state, 3/4, front, back |
-| Korra other | front pair (3/4 + front), leaning pose, season 4 front |
+| Korra other | front pair (3/4 + front), leaning pose, season 4 front, hand-on-hip pose (image 65, cropped at the thigh) |
 | Metalbender officer (female, armour) | 3/4, front, back, side |
 | Bolin (suit) | side, 3/4, front, back |
 | Kuvira (coat + metal armour) | 3/4 front, back |
