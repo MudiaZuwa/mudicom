@@ -2564,6 +2564,433 @@
     ]
    },
    "colors": 4
+  },
+  {
+   "id": "hand_korra_palm_up",
+   "src": "57_korra_shrug_open_hands.jpg",
+   "box": [
+    125,
+    300,
+    228,
+    370
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_open"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      140,
+      320
+     ],
+     [
+      165,
+      356
+     ],
+     [
+      205,
+      352
+     ],
+     [
+      132,
+      350
+     ]
+    ],
+    "tol": 14,
+    "bridge": 4
+   },
+   "detail": 6,
+   "scale": 2
+  },
+  {
+   "id": "hand_korra_open_side",
+   "src": "57_korra_shrug_open_hands.jpg",
+   "box": [
+    333,
+    326,
+    419,
+    388
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_open"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      360,
+      358
+     ],
+     [
+      372,
+      340
+     ],
+     [
+      400,
+      372
+     ],
+     [
+      380,
+      380
+     ]
+    ],
+    "tol": 14,
+    "bridge": 4
+   },
+   "detail": 6,
+   "scale": 2
+  },
+  {
+   "id": "hand_amon_spread",
+   "src": "58_amon_raised_open_hand.jpg",
+   "box": [
+    45,
+    18,
+    117,
+    90
+   ],
+   "character": "Amon",
+   "sex": "male",
+   "outfit": [
+    "hand_open"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      80,
+      70
+     ],
+     [
+      75,
+      60
+     ],
+     [
+      90,
+      75
+     ],
+     [
+      68,
+      42
+     ],
+     [
+      110,
+      74
+     ]
+    ],
+    "tol": 16,
+    "bridge": 4
+   },
+   "detail": 6,
+   "scale": 2
+  },
+  {
+   "id": "hand_korra_fist_cheek",
+   "src": "59_korra_s3_fist_on_cheek.jpg",
+   "box": [
+    451,
+    197,
+    568,
+    312
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_fist"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      500,
+      215
+     ],
+     [
+      480,
+      240
+     ],
+     [
+      520,
+      250
+     ],
+     [
+      540,
+      270
+     ],
+     [
+      470,
+      285
+     ]
+    ],
+    "tol": 12,
+    "bridge": 4
+   },
+   "detail": 6,
+   "exclude": [
+    [
+     [
+      430,
+      180
+     ],
+     [
+      462,
+      180
+     ],
+     [
+      462,
+      266
+     ],
+     [
+      453,
+      276
+     ],
+     [
+      453,
+      330
+     ],
+     [
+      430,
+      330
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "hand_korra_fist_fanart",
+   "src": "60_korra_s3_fists_wrapped_fanart.jpg",
+   "box": [
+    192,
+    310,
+    272,
+    395
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_fist"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      213,
+      352
+     ],
+     [
+      240,
+      340
+     ],
+     [
+      228,
+      378
+     ],
+     [
+      258,
+      350
+     ]
+    ],
+    "tol": 14,
+    "bridge": 4
+   },
+   "detail": 6,
+   "scale": 2
+  },
+  {
+   "id": "hand_lin_raised",
+   "src": "62_lin_raised_hand.jpg",
+   "box": [
+    11,
+    93,
+    116,
+    262
+   ],
+   "character": "Lin",
+   "sex": "female",
+   "outfit": [
+    "hand_open"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      62,
+      215
+     ],
+     [
+      45,
+      185
+     ],
+     [
+      33,
+      140
+     ],
+     [
+      70,
+      200
+     ],
+     [
+      90,
+      160
+     ]
+    ],
+    "tol": 13,
+    "bridge": 4
+   },
+   "detail": 6
+  },
+  {
+   "id": "hand_korra_spread_down",
+   "src": "63_korra_hands_holding_metal.jpg",
+   "box": [
+    362,
+    10,
+    536,
+    142
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_open"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      475,
+      45
+     ],
+     [
+      490,
+      60
+     ],
+     [
+      450,
+      40
+     ],
+     [
+      465,
+      110
+     ]
+    ],
+    "tol": 13,
+    "bridge": 4
+   },
+   "detail": 6
+  },
+  {
+   "id": "hand_korra_palm_left",
+   "src": "64_korra_s3_open_palms.jpg",
+   "box": [
+    35,
+    15,
+    220,
+    241
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_open",
+    "hand_palm"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      120,
+      100
+     ],
+     [
+      180,
+      80
+     ],
+     [
+      120,
+      200
+     ],
+     [
+      170,
+      150
+     ],
+     [
+      90,
+      140
+     ]
+    ],
+    "tol": 10,
+    "bridge": 4
+   },
+   "detail": 6,
+   "exclude": [
+    [
+     [
+      0,
+      0
+     ],
+     [
+      36,
+      0
+     ],
+     [
+      30,
+      60
+     ],
+     [
+      34,
+      140
+     ],
+     [
+      44,
+      175
+     ],
+     [
+      66,
+      245
+     ],
+     [
+      66,
+      300
+     ],
+     [
+      0,
+      300
+     ]
+    ],
+    [
+     [
+      60,
+      222
+     ],
+     [
+      130,
+      235
+     ],
+     [
+      235,
+      260
+     ],
+     [
+      235,
+      300
+     ],
+     [
+      60,
+      300
+     ]
+    ]
+   ]
   }
  ]
 }

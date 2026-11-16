@@ -7,8 +7,8 @@ This library is the source material for the character generator.
 faces, with measurements and illustrations (`guide/`).
 
 ## Contents
-- `originals/` — the 56 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53).
-- `traces/<id>.js` — one traced figure per file (107 figures: 46 bodies and poses, 61 faces and heads). Each file adds one object to `window.TRACES`.
+- `originals/` — the 64 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53); 57–64 are hand references.
+- `traces/<id>.js` — one traced figure per file (115 figures: 46 bodies and poses, 61 faces and heads, 8 hands). Each file adds one object to `window.TRACES`.
 - `gallery.html` — opens in a browser; draws every traced figure with Canvas next to its original crop.
   Filter by character, sex, view or outfit piece. Click a figure to enlarge.
 - `tools/figures.json` — where each figure sits in its sheet (box), plus character, sex, view and outfit tags.
@@ -16,7 +16,7 @@ faces, with measurements and illustrations (`guide/`).
   drawings): white marks the figure inside its box. Made by `tools/cutout.py`.
 - `tools/cutout.py` — makes those masks. Screenshots use a segmentation network (`pip install rembg
   onnxruntime`, model downloaded on first run); line drawings use the connected lines with the
-  interior filled. `python3 tools/cutout.py [id ...]`. Run it before `trace.py` for a new figure.
+  interior filled; single parts such as hands are grown from seed points on their flat colours. `python3 tools/cutout.py [id ...]`. Run it before `trace.py` for a new figure.
 - `tools/trace.py` — the tracer. `python3 tools/trace.py` re-traces everything; `python3 tools/trace.py <id> ...` re-traces some.
 - `tools/compare.js` — renders each trace beside its original and reports a mean colour difference (`node tools/compare.js <out_dir> [id ...]`).
 - `tools/render_lib.js` — the Canvas renderer (`drawTrace(ctx, trace)`).
@@ -57,6 +57,10 @@ Faces and heads (ids contain `_face_`, `_profile_`, `_head_`, `_expr_` or `_sket
 | Asami | 2 front, 3 three-quarter, 2 side | — |
 | Bolin | 2 front, 1 three-quarter | 4 expression studies, 10 small heads, 7 from a sketch sheet (one is a side-view body) |
 | Kuvira | 1 front, 4 three-quarter | — |
+
+Hands (ids start with `hand_`, view `hand`): Korra palm up, open hand from the side, fist against the
+cheek, hand spread downward and an open palm; Lin's raised hand; Amon's spread hand; one fan-art fist.
+Images 61 (comic-style punch) and the second palm in image 64 are saved but not traced.
 
 ## Known limits
 - Off-white details that touch the background (some fur trims, the lineart's white fill) are hard to

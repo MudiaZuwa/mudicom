@@ -187,7 +187,7 @@ def trace_figure(fig, k=None):
     cut = fig.get('cutout')
     if cut:   # not on a plain page: the figure was marked by tools/cutout.py (masks/<id>.png)
         mask = (cv2.imread(os.path.join(ROOT, 'masks', fig['id'] + '.png'), 0) > 127).astype(np.uint8)
-        if cut['mode'] != 'model':   # line drawing: paper and faint watermarks become pure white
+        if cut['mode'].startswith('lines'):   # line drawing: paper and faint watermarks become pure white
             crop[cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY) >= 255 - cut.get('thr', 40)] = 255
     else:
         mask = figure_mask(crop, bg_color(src)[y0:y1, x0:x1], fig, fig['box'])
@@ -195,7 +195,7 @@ def trace_figure(fig, k=None):
     if pre > 1:   # small source: enlarge it smoothly first, so thin lines and small features keep their shape
         crop = cv2.resize(crop, None, fx=pre, fy=pre, interpolation=cv2.INTER_LANCZOS4)
         mask = (cv2.resize(mask * 255, None, fx=pre, fy=pre, interpolation=cv2.INTER_LINEAR) > 127).astype(np.uint8)
-    lines = bool(cut) and cut['mode'] != 'model'
+    lines = bool(cut) and cut['mode'].startswith('lines')
     flat = cv2.pyrMeanShiftFiltering(crop, 3, 14)
     k = k or fig.get('colors', 22)
     C = quantize(flat, mask, k)

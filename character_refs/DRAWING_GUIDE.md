@@ -296,6 +296,23 @@ What this shows:
 - The thumb overlaps or is overlapped by the hand, so its root has no outline.
 - A fist is the back of the hand, a row of four rounded finger ends (index largest) and the thumb
   wrapped across the front, with one knuckle crease.
+- Traced hands (`traces/hand_*.js`, from images 57–64) show the construction at close range:
+
+  ![Traced hands](guide/hands_traced.jpg)
+
+  - A finger is two or three near-straight segments with a corner at each joint, tapering
+    slightly to a blunt, squared tip. It is not a curved sausage.
+  - Fingers are long: on Korra's spread hand the middle finger is about as long as the back of
+    the hand; Lin's are longer and thinner still.
+  - Knuckles show as corners in the silhouette and as the hard edge where a shadow starts. The
+    shadow usually covers the last segment or the underside of each finger and stops exactly at a
+    joint.
+  - Interior lines are few: one or two tendon lines on the back of the hand, the divisions between
+    fingers, a short tick for each nail. Palms carry two or three crease lines.
+  - A fist is two planes: the back of the hand (lit) and the folded fingers (in shadow), meeting
+    along the knuckle ridge, with the finger divisions running across the shadowed plane and the
+    thumb folded over at the side.
+  - From the palm side, each finger is a long rounded bar with a shadow strip down one side.
 - `LOK.hand` in `style/lok_style.js` does not follow this: it strokes the back of the hand, the
   finger mass and the thumb as three closed forms, which leaves seams across the hand.
   `original/naori.js` has a hand built the way described here.

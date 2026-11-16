@@ -15,6 +15,10 @@ instead of its own background test.
       interior is not allowed to leak out through them).
   "cutout": {"mode": "lines_rect", ...}
       line drawing where figures overlap: every line inside the box.
+  "cutout": {"mode": "seed", "points": [[x, y], ...], "tol": 16, "bridge": 4}
+      one part of a figure (a hand): the flat-colour areas under the seed points (source pixels;
+      give one on each tone, e.g. skin and its shadow), spread across ink lines to neighbouring
+      areas of the same colours, with the outline added. Limit it with the box and "exclude".
 
 "exclude" entries on the figure (source pixels; a rect [x0,y0,x1,y1] or a polygon [[x,y],...]) are
 removed in every mode.
@@ -85,6 +89,26 @@ def make_mask(fig, src=None):
         m = keep_main(m, c.get('keep', 0.03))
         if not c.get('holes'): m = fill_small_holes(m)
         return m
+    if c['mode'] == 'seed':
+        lab = cv2.cvtColor(cv2.pyrMeanShiftFiltering(src, 3, 14), cv2.COLOR_BGR2LAB).astype(np.float32)
+        inbox = np.zeros(src.shape[:2], bool); inbox[y0:y1, x0:x1] = True
+        cand = np.zeros(src.shape[:2], bool)
+        for px, py in c['points']:
+            col = np.median(lab[py - 1:py + 2, px - 1:px + 2].reshape(-1, 3), 0)
+            cand |= np.sqrt(((lab - col) ** 2).sum(-1)) < c.get('tol', 16)
+        cand &= inbox & ~excl
+        n, cc = cv2.connectedComponents(cand.astype(np.uint8), connectivity=4)
+        sel = np.isin(cc, [cc[py, px] for px, py in c['points'] if cc[py, px] > 0])
+        b = c.get('bridge', 4); ker = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * b + 1, 2 * b + 1))
+        for _ in range(40):                                   # step across ink lines to the next area of the same colours
+            near = cv2.dilate(sel.astype(np.uint8), ker) > 0
+            ids = np.unique(cc[near & cand]); grown = np.isin(cc, ids[ids > 0])
+            if grown.sum() == sel.sum(): break
+            sel = grown
+        m = cv2.morphologyEx(sel.astype(np.uint8), cv2.MORPH_CLOSE, ker) > 0
+        m = fill_small_holes(m, 0.2)
+        g = c.get('grow', 2); m = cv2.dilate(m.astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * g + 1, 2 * g + 1))) > 0   # take in the outline
+        return (m & inbox & ~excl)[y0:y1, x0:x1]
     ink = ink_of(src, c.get('thr', 40)) & ~excl
     if c['mode'] == 'lines':
         # the drawing = the connected group of lines whose extent best matches the box
