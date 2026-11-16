@@ -7,8 +7,8 @@ This library is the source material for the character generator.
 faces, with measurements and illustrations (`guide/`).
 
 ## Contents
-- `originals/` — the 64 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53); 57–64 are hand references.
-- `traces/<id>.js` — one traced figure per file (115 figures: 46 bodies and poses, 61 faces and heads, 8 hands). Each file adds one object to `window.TRACES`.
+- `originals/` — the 65 unique reference images (duplicates removed), named by character and content. 01–16 are the body sheets; 17–56 are face close-ups, head sketches and one more body sheet (53); 57–65 are hand references (65 is also a full Korra pose).
+- `traces/<id>.js` — one traced figure per file (118 figures: 47 bodies and poses, 61 faces and heads, 10 hands). Each file adds one object to `window.TRACES`.
 - `gallery.html` — opens in a browser; draws every traced figure with Canvas next to its original crop.
   Filter by character, sex, view or outfit piece. Click a figure to enlarge.
 - `tools/figures.json` — where each figure sits in its sheet (box), plus character, sex, view and outfit tags.
@@ -59,7 +59,7 @@ Faces and heads (ids contain `_face_`, `_profile_`, `_head_`, `_expr_` or `_sket
 | Kuvira | 1 front, 4 three-quarter | — |
 
 Hands (ids start with `hand_`, view `hand`): Korra palm up, open hand from the side, fist against the
-cheek, hand spread downward and an open palm; Lin's raised hand; Amon's spread hand; one fan-art fist.
+cheek, hand spread downward, an open palm, a fist hanging at the side and a hand on the hip (both small, from image 65); Lin's raised hand; Amon's spread hand; one fan-art fist.
 Images 61 (comic-style punch) and the second palm in image 64 are saved but not traced.
 
 ## Known limits

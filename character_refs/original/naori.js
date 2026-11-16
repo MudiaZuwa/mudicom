@@ -183,26 +183,23 @@ const NAORI = (() => {
   }
 
   /* =================================================================
-     HAND — hanging at rest it is a loose fist: the back of the hand, the fingers curled under
-     and foreshortened, the thumb lying in front on the body side. One silhouette, no seams
-     across the wrist or knuckles; fingers are separated by tapering lines.
-     Local units: 1 = wrist to the lowest knuckle, +y down the hand, +x toward the thumb.
+     HAND — hanging at rest it is a loose fist. One silhouette, no seams across the wrist or
+     knuckles. Local units: 1 = wrist to the lowest knuckle, +y down the arm, +x toward the body.
      ================================================================= */
   function hand(wx, wy, S, m, ang) {
+    // Shape read from originals/65 (Korra's hanging hand): a blocky loose fist seen from the thumb side. The back of the
+    // hand is a straight edge down to a corner at the knuckles; the folded fingers make a flat-bottomed wedge that juts
+    // toward the body; the thumb lies down the front with a dark gap behind it.
     const keep = LW; LW = LW / S;
     g.save(); g.translate(wx, wy); g.rotate(ang || 0); g.scale(S * m, S);
-    const sk = P.skin, lf = m > 0 ? -1 : 1;                 // lf: local x direction of the viewer's left (the shadow side)
-    // the thumb is part of the same silhouette (its root has no outline); only its inner edge is drawn
-    form([[-0.2, 0, 1], [-0.27, 0.2], [-0.34, 0.45], [-0.345, 0.66, 1], [-0.31, 0.83], [-0.245, 0.9], [-0.185, 0.87, 1],
-      [-0.165, 0.95], [-0.095, 0.99], [-0.03, 0.94, 1], [-0.005, 1.0], [0.065, 1.02], [0.125, 0.955, 1], [0.15, 0.975], [0.2, 0.955], [0.235, 0.895, 1],
-      [0.275, 0.9], [0.325, 0.84], [0.36, 0.68], [0.355, 0.5], [0.315, 0.32], [0.26, 0.16], [0.2, 0, 1]], sk,
-      { sh: [[[-0.5, 0.7], [-0.2, 0.74], [0.05, 0.8], [0.23, 0.76], [0.23, 1.2], [-0.5, 1.2]], [[lf * 0.5, -0.1], [lf * 0.2, -0.1], [lf * 0.25, 0.4], [lf * 0.26, 0.8], [lf * 0.5, 0.8]],
-        [[0.235, 0.895], [0.225, 0.74], [0.3, 0.7], [0.4, 0.66], [0.4, 1], [0.235, 1]]] });
-    tl([[-0.185, 0.87], [-0.2, 0.72], [-0.185, 0.56]], 1.5 * LW, P.ink, 'out');       // between the curled fingers, fading toward the knuckles
-    tl([[-0.03, 0.94], [-0.05, 0.76], [-0.035, 0.58]], 1.5 * LW, P.ink, 'out');
-    tl([[0.125, 0.955], [0.11, 0.78], [0.12, 0.62]], 1.5 * LW, P.ink, 'out');
-    tl([[0.235, 0.895], [0.218, 0.76], [0.215, 0.6], [0.175, 0.42], [0.14, 0.28]], 1.6 * LW, P.ink, 'out');   // inner edge of the thumb, fading into the hand
-    tl([[0.275, 0.9], [0.285, 0.82], [0.32, 0.78]], 1.2 * LW, P.ink, 'out');          // thumbnail edge
+    const sk = P.skin, deep = shade(shade(P.skin), 1.1);
+    form([[-0.17, 0, 1], [-0.11, 0.26], [-0.02, 0.57], [0.055, 0.785, 1], [0.17, 0.9], [0.28, 1.0, 1], [0.38, 0.9], [0.455, 0.79, 1], [0.485, 0.66], [0.42, 0.555, 1], [0.37, 0.42], [0.315, 0.2], [0.17, 0.015, 1]], sk,
+      { sh: [[[-0.05, 0.5], [0.09, 0.58], [0.2, 0.74], [0.33, 0.9], [0.46, 0.8], [0.5, 1.1], [-0.1, 1.1]]] });                    // the folded fingers turn under, away from the light
+    form([[0.165, 0.47, 1], [0.225, 0.55], [0.275, 0.72, 1], [0.21, 0.69], [0.17, 0.585]], deep, {});                             // gap between thumb and fingers
+    tl([[0.1, 0.1], [0.14, 0.3], [0.165, 0.47]], 1.5 * LW, P.ink, 'both');                                                        // front edge of the thumb
+    tl([[0.275, 0.72], [0.3, 0.6], [0.31, 0.46], [0.29, 0.34]], 1.4 * LW, P.ink, 'out');                                          // back edge of the thumb, fading up
+    tl([[0.455, 0.79], [0.4, 0.74], [0.36, 0.66]], 1.4 * LW, P.ink, 'out'); tl([[0.38, 0.9], [0.33, 0.84], [0.3, 0.77]], 1.3 * LW, P.ink, 'out');   // finger folds at the knuckles
+    tl([[0.42, 0.555], [0.39, 0.6], [0.4, 0.66]], 1.2 * LW, P.ink, 'out');
     g.restore(); LW = keep;
   }
 
@@ -271,7 +268,7 @@ const NAORI = (() => {
   function arm(s, rot, hAng) {   // loose sleeve gathered into a wrapped forearm; the hand hangs as a loose fist at mid-thigh
     const E = pts => flip(s, pts), lit = s > 0;
     g.save(); g.translate(s * 0.78, 1.7); g.rotate(rot); g.translate(-s * 0.78, -1.7);
-    hand(s * 1.012, 4.0, 0.47, -s, hAng);
+    hand(s * 1.012, 4.0, 0.6, -s, hAng);
     form(E([[0.8, 1.6], [0.98, 2.2], [1.115, 2.85], [1.215, 3.36, 1], [1.165, 3.5, 1], [0.86, 3.52, 1], [0.785, 3.36, 1], [0.765, 2.9], [0.665, 2.1], [0.62, 1.8]]), P.tunic,
       { sh: [E([[0.5, 1.5], [1.3, 1.5], [1.3, 1.84], [0.9, 1.92], [0.5, 1.9]]),
         lit ? E([[0.5, 1.6], [0.8, 1.9], [0.87, 2.6], [0.9, 3.1], [0.93, 3.6], [0.5, 3.6]]) : E([[1.4, 1.6], [0.92, 1.9], [1.0, 2.6], [1.06, 3.1], [1.07, 3.6], [1.4, 3.6]]),
@@ -298,7 +295,7 @@ const NAORI = (() => {
   function draw(ctx, o = {}) {
     g = ctx; LW = o.lineWidth || 0.0045;
     const tilt = fn => { g.save(); g.translate(0, 1.0); g.rotate(-0.035); g.translate(0, -1.0); fn(); g.restore(); };
-    tilt(hairBack); hoodBack(); backPanel(); boot(1, 0.08, 1); boot(-1, 0.06, 0.72); pants(); vest(); skirt(); sash(); arm(-1, 0.02, -0.06); arm(1, -0.085, 0.1); neck(); mantle(); braid(); tilt(() => { head(); hairFront(); });
+    tilt(hairBack); hoodBack(); backPanel(); boot(1, 0.08, 1); boot(-1, 0.06, 0.72); pants(); vest(); skirt(); sash(); arm(-1, 0.02, 0.05); arm(1, -0.085, -0.1); neck(); mantle(); braid(); tilt(() => { head(); hairFront(); });
   }
   return { draw, P, HEIGHT, shade };
 })();

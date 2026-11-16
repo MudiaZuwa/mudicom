@@ -313,6 +313,11 @@ What this shows:
     along the knuckle ridge, with the finger divisions running across the shadowed plane and the
     thumb folded over at the side.
   - From the palm side, each finger is a long rounded bar with a shadow strip down one side.
+  - The hand hanging at rest (image 65, `hand_korra_hanging_fist`) is a blocky loose fist seen
+    from the thumb side: a straight edge down the back of the hand to a corner at the knuckles,
+    a flat-bottomed wedge of folded fingers jutting toward the body, the thumb lying down the
+    front with a gap behind it, and the underside of the fingers in shadow. It is about 0.6 head
+    long and 0.28 wide. `original/naori.js` uses this shape.
 - `LOK.hand` in `style/lok_style.js` does not follow this: it strokes the back of the hand, the
   finger mass and the thumb as three closed forms, which leaves seams across the hand.
   `original/naori.js` has a hand built the way described here.

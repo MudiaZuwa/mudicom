@@ -2991,6 +2991,125 @@
      ]
     ]
    ]
+  },
+  {
+   "id": "korra_s1_hip_pose",
+   "src": "65_korra_hand_on_hip_hanging_fist.jpg",
+   "box": [
+    0,
+    0,
+    316,
+    632
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "sleeveless_top",
+    "armbands",
+    "gauntlets",
+    "sash",
+    "pelt_skirt",
+    "baggy_pants",
+    "topknot_hair"
+   ],
+   "view": "pose",
+   "detail": 6
+  },
+  {
+   "id": "hand_korra_hanging_fist",
+   "src": "65_korra_hand_on_hip_hanging_fist.jpg",
+   "box": [
+    7,
+    438,
+    60,
+    511
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_fist",
+    "hand_hanging"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      25,
+      460
+     ],
+     [
+      30,
+      450
+     ],
+     [
+      38,
+      465
+     ],
+     [
+      35,
+      498
+     ],
+     [
+      22,
+      480
+     ],
+     [
+      45,
+      488
+     ]
+    ],
+    "tol": 14,
+    "bridge": 3
+   },
+   "detail": 6,
+   "scale": 3
+  },
+  {
+   "id": "hand_korra_on_hip",
+   "src": "65_korra_hand_on_hip_hanging_fist.jpg",
+   "box": [
+    208,
+    325,
+    258,
+    385
+   ],
+   "character": "Korra",
+   "sex": "female",
+   "outfit": [
+    "hand_open",
+    "hand_on_hip"
+   ],
+   "view": "hand",
+   "cutout": {
+    "mode": "seed",
+    "points": [
+     [
+      225,
+      345
+     ],
+     [
+      235,
+      365
+     ],
+     [
+      245,
+      372
+     ],
+     [
+      228,
+      352
+     ],
+     [
+      240,
+      358
+     ]
+    ],
+    "tol": 14,
+    "bridge": 3
+   },
+   "detail": 6,
+   "scale": 3
   }
  ]
 }
